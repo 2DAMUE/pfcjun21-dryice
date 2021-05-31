@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DryIce">
 
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:theme="@style/Theme.DryIce.NoActionBar"></activity>
 
         <activity android:name=".SplashActivity"
             android:theme="@style/Theme.DryIce.NoActionBar">
