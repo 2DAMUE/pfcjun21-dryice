@@ -4,11 +4,11 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/oscuroPrimary</item>
         <item name="colorPrimaryVariant">@color/oscuroSecondary</item>
-        <item name="colorAccent">@color/azulAccent</item>
+        <item name="colorOnPrimary">@color/azulAccent</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/oscuroPrimary</item>
+        <item name="colorSecondaryVariant">@color/oscuroSecondary</item>
+        <item name="colorOnSecondary">@color/azulAccent</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
@@ -22,4 +22,9 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+    <style name="CircularDeterminateProgressBar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/circle</item>
+    </style>
+
 </resources>

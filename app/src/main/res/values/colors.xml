@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="oscuroPrimary">#161827</color>
-    <color name="oscuroSecondary">#2E353D</color>
+    <color name="oscuroPrimary">#161926</color>
+    <color name="oscuroSecondary">#1B1F2E</color>
+    <color name="oscuroThird">#292E49</color>
+    <color name="claroLetras">#E5E4E5</color>
     <color name="azulAccent">#07C7F2</color>
+
+    <color name="grafica_recorrido">#181B27</color>
+    <color name="grafica_start">#00FFFF</color>
+    <color name="grafica_center">#1A36F1</color>
+    <color name="grafica_end">#FC6402</color>
 
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#161926</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="iconoSelected">#07C7F2</color>
+    <color name="iconoUnselected">#6A7A83</color>
+
+    <color name="toolbar_background">#B3161926</color>
+    <color name="cardview_background">#0F1119</color>
 </resources>
