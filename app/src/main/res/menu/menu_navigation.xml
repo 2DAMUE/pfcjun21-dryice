@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/activity_graficas"
+        android:title="Estadísticas"
+        android:icon="@drawable/botton_grafica"/>
+    <item
+        android:id="@+id/activity_map"
+        android:title="Mapa"
+        android:icon="@drawable/botton_map"/>
+    <item
+        android:id="@+id/activity_profile"
+        android:title="Perfil"
+        android:icon="@drawable/botton_profile"/>
+</menu>
