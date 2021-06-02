@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:fitsSystemWindows="true"
+    android:background="@color/oscuroPrimary">
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="900dp"
+        android:orientation="vertical"
+        android:background="@drawable/cardborder_background_register">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/hombre" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seleccione foto de perfil"
+                android:textStyle="bold"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/claroLetras"
+                android:textSize="18sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="25dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputNombreRegister"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/cardview_background"
+                android:textColorHint="@color/iconoUnselected"
+                app:boxStrokeColor="@color/azulAccent"
+                app:endIconTint="@color/azulAccent"
+                app:hintTextColor="@color/azulAccent"
+                app:placeholderTextColor="@color/azulAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/cardview_background"
+                    android:hint="Nombre completo"
+                    android:inputType="textPersonName"
+                    android:maxLines="1"
+                    android:theme="@style/EditText_colores"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputEmailRegister"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/cardview_background"
+                android:textColorHint="@color/iconoUnselected"
+                app:boxStrokeColor="@color/azulAccent"
+                app:endIconTint="@color/azulAccent"
+                app:hintTextColor="@color/azulAccent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/cardview_background"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:theme="@style/EditText_colores"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputPassRegister"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/cardview_background"
+                android:textColorHint="@color/iconoUnselected"
+                app:boxStrokeColor="@color/azulAccent"
+                app:endIconTint="@color/azulAccent"
+                app:hintTextColor="@color/azulAccent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/cardview_background"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:theme="@style/EditText_colores"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputRePassRegister"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/cardview_background"
+                android:textColorHint="@color/iconoUnselected"
+                app:boxStrokeColor="@color/azulAccent"
+                app:endIconTint="@color/azulAccent"
+                app:hintTextColor="@color/azulAccent"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextRePass"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:textSize="16sp"
+                    android:backgroundTint="@color/cardview_background"
+                    android:hint="Repetir contraseña"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:theme="@style/EditText_colores"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="270dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center_horizontal"
+                android:backgroundTint="@color/azulAccent"
+                android:textColor="@color/claroLetras"
+                android:text="Registrarse"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textStyle="bold"/>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="11dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_side_bg_register" />
+
+    <ImageView
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="25dp"
+        android:onClick="registerToLoginSidebarClick"
+        android:src="@drawable/icono_atras_register" />
+
+</RelativeLayout>

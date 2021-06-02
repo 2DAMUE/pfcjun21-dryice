@@ -2,22 +2,25 @@
     <!-- Base application theme. -->
     <style name="Theme.DryIce" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/oscuroPrimary</item>
+        <item name="colorPrimary">@color/azulAccent</item>
+        <item name="colorPrimaryDark">@color/oscuroPrimary</item>
         <item name="colorPrimaryVariant">@color/oscuroSecondary</item>
-        <item name="colorOnPrimary">@color/azulAccent</item>
+        <item name="colorAccent">@color/azulAccent</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/oscuroPrimary</item>
         <item name="colorSecondaryVariant">@color/oscuroSecondary</item>
         <item name="colorOnSecondary">@color/azulAccent</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor"
+            tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:textColorPrimary">@color/claroLetras</item>
     </style>
 
     <style name="Theme.DryIce.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="colorPrimary">@color/oscuroPrimary</item>
+        <item name="colorPrimary">@color/azulAccent</item>
         <item name="colorPrimaryDark">@color/oscuroSecondary</item>
         <item name="colorAccent">@color/azulAccent</item>
 
@@ -26,6 +29,12 @@
         <item name="colorOnSecondary">@color/azulAccent</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:textColorPrimary">@color/claroLetras</item>
+    </style>
+
+    <style name="EditText_colores">
+        <item name="colorControlNormal">@color/iconoUnselected</item>
+        <item name="colorControlActivated">@color/claroLetras</item>
     </style>
 
     <style name="CircularDeterminateProgressBar">
