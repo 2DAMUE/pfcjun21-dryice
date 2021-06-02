@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "70730620689",
+    "firebase_url": "https://dryicepfc-default-rtdb.firebaseio.com",
+    "project_id": "dryicepfc",
+    "storage_bucket": "dryicepfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70730620689:android:3c4d3a6a938bd44d9936b0",
+        "android_client_info": {
+          "package_name": "com.sap.dryice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70730620689-lq4vi6tosb9hio8hvf8hfs1i3fo2fkn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoB1UhuoJgO3D2N4vWLcT1SWI5ZkyTLYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70730620689-lq4vi6tosb9hio8hvf8hfs1i3fo2fkn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

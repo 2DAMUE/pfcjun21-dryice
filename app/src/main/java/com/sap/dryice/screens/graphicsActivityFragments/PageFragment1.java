@@ -1,4 +1,4 @@
-package com.sap.dryice.fragments_main_screen;
+package com.sap.dryice.screens.graphicsActivityFragments;
 
 import android.graphics.Color;
 import android.os.Bundle;

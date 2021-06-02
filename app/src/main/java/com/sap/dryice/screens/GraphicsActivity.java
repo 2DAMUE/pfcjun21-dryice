@@ -1,22 +1,34 @@
-package com.sap.dryice;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.sap.dryice.screens;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
-public class ProfileActivity extends AppCompatActivity {
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.sap.dryice.R;
+import com.sap.dryice.screens.graphicsActivityFragments.PageFragment1;
+import com.sap.dryice.screens.graphicsActivityFragments.PageFragment2;
+import com.sap.dryice.screens.graphicsActivityFragments.PageFragment3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GraphicsActivity extends AppCompatActivity {
 
     BottomNavigationView bnv;
+
+    private MainVerticalViewPager viewPager;
+    private MainPagerAdapter pagerAdapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
+        setContentView(R.layout.activity_graphics);
 
         bnv = findViewById(R.id.bottom_navigation);
 
@@ -33,14 +45,26 @@ public class ProfileActivity extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.activity_graficas:
-                        startActivity(new Intent(getApplicationContext(), ActivityGraphics.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.activity_profile:
                         return true;
                 }
                 return false;
             }
         });
+
+        List<Fragment> list = new ArrayList<>();
+        list.add(new PageFragment1());
+        list.add(new PageFragment2());
+        list.add(new PageFragment3());
+
+        viewPager = findViewById(R.id.pager);
+        pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),list);
+
+        viewPager.setAdapter(pagerAdapter);
+
+
+
+
     }
+
+
 }

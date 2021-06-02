@@ -5,19 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity"
+    tools:context=".screens.ProfileActivity"
     android:fitsSystemWindows="true"
     android:background="@color/oscuroPrimary">
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/oscuroSecondary"
-        app:itemIconTint="@drawable/bottom_nav_item_selector"
-        app:itemTextColor="@drawable/bottom_nav_item_selector"
-        app:menu="@menu/menu_navigation" />
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
