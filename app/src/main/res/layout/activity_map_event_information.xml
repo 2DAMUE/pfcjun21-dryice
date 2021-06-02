@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    style="@style/AppTheme.NoActionBar">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +24,6 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:textSize="20dp"
-            android:textColor="@color/primaryTextColor"
             android:text="TITULO EVENTO"
             android:layout_marginBottom="10dp"/>
 
@@ -39,7 +37,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textSize="17dp"
-                android:textColor="@color/primaryTextColor"
                 android:text="Creada por:"
                 android:layout_marginEnd="5dp"/>
             <TextView
@@ -49,22 +46,8 @@
                 android:layout_gravity="center"
                 android:textSize="17dp"
                 android:layout_marginStart="5dp"
-                android:textColor="@color/primaryTextColor"
                 android:text="User"/>
         </LinearLayout>
-
-        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
-            android:id="@+id/btn_info_Event"
-            style="@style/loginButton"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/loginViewsMargin"
-            android:layout_marginBottom="30dp"
-            android:text="ENTRAR AL EVENTO"
-            android:gravity="center"
-            app:initialCornerAngle="27dp"
-            app:spinning_bar_color="#FFF"
-            app:spinning_bar_padding="6dp"
-            app:spinning_bar_width="4dp" />
 
     </LinearLayout>
 

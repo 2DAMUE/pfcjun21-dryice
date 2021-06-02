@@ -27,6 +27,8 @@
         android:theme="@style/Theme.DryIce">
         <activity android:name=".screens.LoginActivity"
             android:theme="@style/Theme.DryIce.NoActionBar"></activity>
+        <activity android:name=".screens.RegisterActivity"
+            android:theme="@style/Theme.DryIce.NoActionBar"/>
         <activity
             android:name=".screens.MapsActivity"
             android:theme="@style/Theme.DryIce.NoActionBar" />

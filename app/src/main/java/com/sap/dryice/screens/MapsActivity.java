@@ -222,7 +222,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         drawLocation(uBueno.getLatitude(), uBueno.getLongitude(), uBueno.getIdRPi());
-        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 if (marker.getTitle().equals(uBueno.getIdRPi())){
@@ -284,7 +284,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 builder.show();
                 return true;
             }
-        });
+        });*/
     }
 
     private void drawLocationEvents(double latitud, double longitud, String name) {
