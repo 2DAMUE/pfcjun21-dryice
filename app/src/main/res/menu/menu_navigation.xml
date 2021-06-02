@@ -8,8 +8,4 @@
         android:id="@+id/activity_map"
         android:title="Mapa"
         android:icon="@drawable/botton_map"/>
-    <item
-        android:id="@+id/activity_profile"
-        android:title="Perfil"
-        android:icon="@drawable/botton_profile"/>
 </menu>

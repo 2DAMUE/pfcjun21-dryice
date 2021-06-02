@@ -1,4 +1,4 @@
-package com.sap.dryice;
+package com.sap.dryice.screens;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -1,4 +1,4 @@
-package com.sap.dryice;
+package com.sap.dryice.screens;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

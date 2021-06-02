@@ -1,4 +1,4 @@
-package com.sap.dryice;
+package com.sap.dryice.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.sap.dryice.R;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -43,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Intent intent = new Intent(SplashActivity
-                        .this, ActivityGraphics.class);
+                        .this, GraphicsActivity.class);
                 startActivity(intent);
                 finish();
             }

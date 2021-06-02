@@ -25,13 +25,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DryIce">
-        <activity android:name=".LoginActivity"
+        <activity android:name=".screens.LoginActivity"
             android:theme="@style/Theme.DryIce.NoActionBar"></activity>
         <activity
-            android:name=".MapsActivity"
+            android:name=".screens.MapsActivity"
             android:theme="@style/Theme.DryIce.NoActionBar" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".screens.ProfileActivity"
             android:theme="@style/Theme.DryIce.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -46,10 +46,10 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ActivityGraphics"
+            android:name=".screens.GraphicsActivity"
             android:theme="@style/Theme.DryIce.NoActionBar" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".screens.SplashActivity"
             android:theme="@style/Theme.DryIce.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
