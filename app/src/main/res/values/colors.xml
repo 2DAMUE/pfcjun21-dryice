@@ -22,4 +22,7 @@
 
     <color name="toolbar_background">#B3161926</color>
     <color name="cardview_background">#0F1119</color>
+    <color name="cardview">#1E2233</color>
+
+
 </resources>

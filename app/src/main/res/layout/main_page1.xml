@@ -41,7 +41,6 @@
                 android:textColor="@color/white"
                 android:text="60%"
                 android:textSize="50sp"
-
                 android:fontFamily="@font/abeatby_kai_regular"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -55,54 +54,88 @@
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="35dp"
             android:orientation="horizontal"
             android:gravity="center"
-            android:paddingTop="10dp">
+            >
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/icono_bueno"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/icono_circle_low"
                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Sin riesgo"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:fontFamily="@font/abeatby_kai_regular"/>
 
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/icono_regular"
-               android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"/>
-
-            <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/icono_malo"
+                android:layout_marginLeft="10dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/icono_circle_medium"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Riesgo"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:fontFamily="@font/abeatby_kai_regular"/>
+
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/icono_circle_hight"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Alto riesgo"
+                android:textColor="@color/white"
+                android:textSize="12dp"
+                android:fontFamily="@font/abeatby_kai_regular"/>
 
 
         </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="325dp"
+            android:layout_height="240dp"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="10dp"
+            android:elevation="10dp"
+            android:backgroundTint="@color/oscuroSecondary"
+            android:layout_gravity="center_horizontal"
+            app:cardUseCompatPadding="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Temperatura y humedad"
+                android:textColor="@color/claroLetras"
+                android:textSize="22dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:textStyle="bold"/>
 
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingBottom="40dp"
-        android:paddingLeft="10dp"
-       >
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical"
-            android:paddingRight="60dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="left"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="90dp">
 
             <ImageView
                 android:layout_width="60dp"
                 android:layout_height="70dp"
-                android:paddingLeft="10dp"
+                android:paddingLeft="5dp"
                 android:src="@drawable/icono_temperatura"/>
 
             <TextView
@@ -111,43 +144,40 @@
                 android:layout_height="wrap_content"
                 android:text="22°C"
                 android:textColor="@color/claroLetras"
-                android:textSize="34dp"
-                android:fontFamily="@font/abeatby_kai_regular"
-               />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="25dp"
-                android:src="@drawable/icono_humedad"/>
-
-            <TextView
-                android:id="@+id/text_view_hum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:text="56%"
-                android:textColor="@color/claroLetras"
-                android:textSize="34dp"
+                android:textSize="26dp"
                 android:fontFamily="@font/abeatby_kai_regular"
                 />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="right"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="98dp">
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="55dp"
+                    android:layout_marginLeft="25dp"
+                    android:src="@drawable/icono_humedad"/>
+
+                <TextView
+                    android:id="@+id/text_view_hum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="56%"
+                    android:textColor="@color/claroLetras"
+                    android:textSize="26dp"
+                    android:fontFamily="@font/abeatby_kai_regular"
+                    />
 
 
-        </LinearLayout>
+            </LinearLayout>
 
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
-
-
-
 </LinearLayout>
