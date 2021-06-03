@@ -1,75 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:background="@color/oscuroPrimary"
-    tools:context=".MainActivity">
+    tools:context=".screens.GraphicsActivity"
+    android:fitsSystemWindows="true">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart3"
-        android:layout_width="282dp"
-        android:layout_height="254dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="371dp"
-        android:layout_marginEnd="128dp"
-        android:layout_marginBottom="106dp" />
 
-    <TextView
-        android:id="@+id/co2textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="596dp"
-        android:text="CO2"
-        android:textColor="@color/white" />
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginTop="35dp">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart2"
-        android:layout_width="282dp"
-        android:layout_height="189dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="287dp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart3"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
 
-    <TextView
-        android:id="@+id/temptextView3"
-        android:layout_width="111dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="289dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="376dp"
-        android:text="TEMPERATURA"
-        android:textColor="@color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CO2 (ppm)"
+            android:textSize="18dp"
+            android:fontFamily="@font/abeatby_kai_regular"
+            android:textColor="@color/iconoUnselected"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart2"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
 
-    <TextView
-        android:id="@+id/humedadtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="309dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="165dp"
-        android:text="HUMEDAD"
-        android:textColor="@color/white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatura (ºC)"
+            android:textSize="18dp"
+            android:fontFamily="@font/abeatby_kai_regular"
+            android:textColor="@color/iconoUnselected"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/barChart"
-        android:layout_width="283dp"
-        android:layout_height="206dp"
-        android:layout_above="@+id/barChart2"
-        android:layout_marginBottom="-5dp" />
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"/>
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Humedad (%)"
+            android:textSize="18dp"
+            android:fontFamily="@font/abeatby_kai_regular"
+            android:textColor="@color/iconoUnselected"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max :"
+                android:textSize="23dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/claroLetras"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1269"
+                android:textSize="26dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/grafica_end"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min :"
+                android:textSize="23dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/claroLetras"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="602"
+                android:textSize="26dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/azulAccent"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max :"
+                android:textSize="23dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/claroLetras"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="28 ºC"
+                android:textSize="26dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/grafica_end"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min :"
+                android:textSize="23dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/claroLetras"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22 ºC"
+                android:textSize="26dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/azulAccent"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max :"
+                android:textSize="23dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/claroLetras"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="76%"
+                android:textSize="26dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/grafica_end"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Min :"
+                android:textSize="23dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/claroLetras"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="22%"
+                android:textSize="26dp"
+                android:fontFamily="@font/abeatby_kai_regular"
+                android:textColor="@color/azulAccent"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="10dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

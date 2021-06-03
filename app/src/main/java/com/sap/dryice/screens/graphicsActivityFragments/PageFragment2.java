@@ -36,12 +36,12 @@ public class PageFragment2 extends Fragment {
     private BarChart barChart;
     private BarChart barChart2;
     private BarChart barChart3;
-    private String[] datos = new String[]{"C02 Máximo", "C02 Mínimo"};
-    private String[] datos2 = new String[]{"Temperatura Máxima", "Temperatura Mínima"};
-    private String[] datos3 = new String[]{"Humedad Máxima", "Humedad Mínima"};
-    private int[] datosRasp = new int[]{305, 21};
-    private int[] datosRasp2 = new int[]{41, 3};
-    private int[] datosRasp3 = new int[]{90, 5};
+    private String[] datos = new String[]{"C02 Max", "C02 Min"};
+    private String[] datos2 = new String[]{"Temp. Max", "Temp. Min"};
+    private String[] datos3 = new String[]{"Hum. Max", "Hum. Min"};
+    private int[] datosRasp = new int[]{76, 22};
+    private int[] datosRasp2 = new int[]{28, 22};
+    private int[] datosRasp3 = new int[]{1269, 602};
     private int[] datosColores = new int[]{Color.rgb(0,255,255), Color.rgb(252,100,2)};
 
 
@@ -92,6 +92,7 @@ public class PageFragment2 extends Fragment {
     private void legend(Chart chart) {
         Legend legend = chart.getLegend();
         legend.setForm(Legend.LegendForm.CIRCLE);
+        legend.setTextColor(getResources().getColor(R.color.claroLetras));
         legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         ArrayList<LegendEntry> entries = new ArrayList<>();
         for (int i = 0; i < datosRasp.length; i++) {
@@ -106,6 +107,7 @@ public class PageFragment2 extends Fragment {
     private void legend2(Chart chart) {
         Legend legend2 = chart.getLegend();
         legend2.setForm(Legend.LegendForm.CIRCLE);
+        legend2.setTextColor(getResources().getColor(R.color.claroLetras));
         legend2.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         ArrayList<LegendEntry> entries = new ArrayList<>();
         for (int i = 0; i < datosRasp2.length; i++) {
@@ -119,6 +121,7 @@ public class PageFragment2 extends Fragment {
     private void legend3(Chart chart) {
         Legend legend3 = chart.getLegend();
         legend3.setForm(Legend.LegendForm.CIRCLE);
+        legend3.setTextColor(getResources().getColor(R.color.claroLetras));
         legend3.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         ArrayList<LegendEntry> entries3 = new ArrayList<>();
         for (int i = 0; i < datosRasp3.length; i++) {
@@ -189,11 +192,20 @@ public class PageFragment2 extends Fragment {
         barChart = (BarChart) getChart(barChart, "", Color.GRAY, Color.rgb(76, 80, 118), 3000);
         //barChart.setDrawGridBackground(false);
         //barChart.setDrawBarShadow(false);
+
         barChart.setData(getBarData());
         barChart.invalidate();
         axisX(barChart.getXAxis());
         axisLeft(barChart.getAxisLeft());
         axisRight(barChart.getAxisRight());
+
+        barChart.getAxisLeft().setAxisMaximum(100);
+        barChart.getAxisLeft().setAxisMinimum(0);
+        barChart.setBackgroundColor(getResources().getColor(R.color.oscuroPrimary));
+        barChart.getAxisLeft().setTextColor(getResources().getColor(R.color.white));
+        barChart.getAxisLeft().setAxisLineColor(getResources().getColor(R.color.white));
+
+
         barChart2 = (BarChart) getChart2(barChart2, "", Color.GRAY, Color.rgb(76, 80, 118), 3000);
         //barChart.setDrawGridBackground(false);
         //barChart.setDrawBarShadow(false);
@@ -203,6 +215,12 @@ public class PageFragment2 extends Fragment {
         axisLeft(barChart2.getAxisLeft());
         axisRight(barChart2.getAxisRight());
 
+        barChart2.getAxisLeft().setAxisMaximum(50);
+        barChart2.getAxisLeft().setAxisMinimum(0);
+        barChart2.setBackgroundColor(getResources().getColor(R.color.oscuroPrimary));
+        barChart2.getAxisLeft().setTextColor(getResources().getColor(R.color.white));
+        barChart2.getAxisLeft().setAxisLineColor(getResources().getColor(R.color.white));
+
         barChart3 = (BarChart) getChart3(barChart3, "", Color.GRAY, Color.rgb(76, 80, 118), 3000);
         //barChart.setDrawGridBackground(false);
         //barChart.setDrawBarShadow(false);
@@ -211,26 +229,33 @@ public class PageFragment2 extends Fragment {
         axisX(barChart3.getXAxis());
         axisLeft(barChart3.getAxisLeft());
         axisRight(barChart3.getAxisRight());
+
+        barChart3.getAxisLeft().setAxisMaximum(2000);
+        barChart3.getAxisLeft().setAxisMinimum(0);
+        barChart3.setBackgroundColor(getResources().getColor(R.color.oscuroPrimary));
+        barChart3.getAxisLeft().setTextColor(getResources().getColor(R.color.white));
+        barChart3.getAxisLeft().setAxisLineColor(getResources().getColor(R.color.white));
     }
 
     private DataSet getData(DataSet dataSet) {
         dataSet.setColors(datosColores);
-        dataSet.setValueTextSize(Color.WHITE);
+        dataSet.setValueTextColor(Color.WHITE);
         dataSet.setValueTextSize(10);
         return dataSet;
     }
 
     private DataSet getData2(DataSet dataSet2) {
         dataSet2.setColors(datosColores);
-        dataSet2.setValueTextSize(Color.WHITE);
+        dataSet2.setValueTextColor(Color.WHITE);
         dataSet2.setValueTextSize(10);
         return dataSet2;
     }
 
     private DataSet getData3(DataSet dataSet3) {
         dataSet3.setColors(datosColores);
-        dataSet3.setValueTextSize(Color.WHITE);
+        dataSet3.setValueTextColor(Color.WHITE);
         dataSet3.setValueTextSize(10);
+
         return dataSet3;
     }
 
