@@ -20,4 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(new Intent(this, LoginActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
     }
+    public void registerToRaspberryConfigClick(View view) {
+        startActivity(new Intent(this, RaspberryRegisterActivity.class));
+        overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
+    }
 }
