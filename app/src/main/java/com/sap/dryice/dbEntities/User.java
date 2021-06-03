@@ -2,7 +2,6 @@ package com.sap.dryice.dbEntities;
 
 public class User {
     private String userId;
-    private String username;
     private String name;
     private String email;
     private String idRPi;
@@ -12,9 +11,8 @@ public class User {
     public User() {
     }
 
-    public User(String userId, String username, String name, String email, String idRPi, double latitude, double longitude) {
+    public User(String userId, String name, String email, String idRPi, double latitude, double longitude) {
         this.userId = userId;
-        this.username = username;
         this.name = name;
         this.email = email;
         this.idRPi = idRPi;
@@ -28,14 +26,6 @@ public class User {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getName() {
@@ -82,7 +72,6 @@ public class User {
     public String toString() {
         return "User{" +
                 "userId='" + userId + '\'' +
-                "username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", idRPi='" + idRPi + '\'' +

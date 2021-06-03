@@ -45,19 +45,9 @@ public class CollectUsers {
         });
     }
 
-    private static String changeName(String nombre_user) {
-        String nombre;
-        String[] nombreCompleto = nombre_user.split(" ");
-        if (nombreCompleto.length >= 2) {
-            return nombre = nombreCompleto[0] + " " + nombreCompleto[1];
-        } else {
-            return nombre = nombreCompleto[0];
-        }
-    }
-
-    private static String changeUsername(String email) {
-        String[] array = email.split("@");
-        return array[0];
+    public static void saveFirebase(User user) {
+        String userId = user.getUserId();
+        myDatabaseReference.child(userId).setValue(user);
     }
 
     public interface Comunication{

@@ -17,7 +17,7 @@ import java.util.Map;
 
 public class CollectRPiUsers {
     private static FirebaseDatabase myDatabase = FirebaseDatabase.getInstance();
-    private static DatabaseReference myDatabaseReference = myDatabase.getReference("Users");
+    private static DatabaseReference myDatabaseReference = myDatabase.getReference("RPiUsers");
 
     public static void updateLocation(double latitud, double longitud, String username) {
         Map<String,Object> updateLatLong = new HashMap<>();
@@ -45,19 +45,8 @@ public class CollectRPiUsers {
         });
     }
 
-    private static String changeName(String nombreUser) {
-        String nombre;
-        String[] nombreCompleto = nombreUser.split(" ");
-        if (nombreCompleto.length >= 2) {
-            return nombre = nombreCompleto[0] + " " + nombreCompleto[1];
-        } else {
-            return nombre = nombreCompleto[0];
-        }
-    }
-
-    private static String changeUsername(String email) {
-        String[] array = email.split("@");
-        return array[0];
+    public static void saveFirebase(RPiUser rPiUser) {
+        myDatabaseReference.child(rPiUser.getIdRPi()).setValue(rPiUser);
     }
 
     public interface Comunication{
