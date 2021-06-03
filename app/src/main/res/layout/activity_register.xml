@@ -151,16 +151,13 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:layout_gravity="center_horizontal"
-                android:backgroundTint="@color/azulAccent"
+                android:backgroundTint="@color/grafica_end"
                 android:textColor="@color/claroLetras"
-                android:text="Registrarse"
+                android:text="Siguiente paso"
                 android:fontFamily="@font/abeatby_kai_regular"
                 android:textStyle="bold"/>
 
-
         </LinearLayout>
-
-
 
     </LinearLayout>
 
