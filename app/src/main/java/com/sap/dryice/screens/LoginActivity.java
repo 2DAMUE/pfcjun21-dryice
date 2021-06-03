@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         USERUID = mAuth.getCurrentUser().getUid();
-                        Intent accessIntent = new Intent(getApplicationContext(), MapsActivity.class);
+                        Intent accessIntent = new Intent(getApplicationContext(), GraphicsActivity.class);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(accessIntent);
