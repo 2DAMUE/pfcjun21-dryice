@@ -1,21 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/oscuroPrimary">
+    android:orientation="vertical"
+    android:background="@color/oscuroPrimary"
+    tools:context=".MainActivity">
 
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart3"
+        android:layout_width="282dp"
+        android:layout_height="254dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="371dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="106dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/co2textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="297dp"
-        android:text="Page2"
-        android:textSize="50dp"
-        android:textColor="@color/azulAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="596dp"
+        android:text="CO2"
+        android:textColor="@color/white" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart2"
+        android:layout_width="282dp"
+        android:layout_height="189dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="287dp" />
+
+    <TextView
+        android:id="@+id/temptextView3"
+        android:layout_width="111dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="289dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="376dp"
+        android:text="TEMPERATURA"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/humedadtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="309dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="165dp"
+        android:text="HUMEDAD"
+        android:textColor="@color/white" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="283dp"
+        android:layout_height="206dp"
+        android:layout_above="@+id/barChart2"
+        android:layout_marginBottom="-5dp" />
+
+</RelativeLayout>
