@@ -75,8 +75,10 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
         pwdRPi = findViewById(R.id.textInputPwdRPiRegister);
         btnRegister = findViewById(R.id.btnRegisterEnd);
 
+        firebaseAuth = FirebaseAuth.getInstance();
         getIntentData();
         continueEndRegistration();
+
     }
 
     private void getIntentData() {
@@ -136,8 +138,18 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
     private String hashPwd() {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
-            String hashedPassword = String.valueOf(md.digest(strPwdRPi.getBytes(StandardCharsets.UTF_8)));
-            return hashedPassword;
+            byte[] hash = md.digest(strPwdRPi.getBytes(StandardCharsets.UTF_8));
+            StringBuffer hexString = new StringBuffer();
+
+            for (int i = 0; i < hash.length; i++) {
+                if ((0xff & hash[i]) < 0x10) {
+                    hexString.append("0"
+                            + Integer.toHexString((0xFF & hash[i])));
+                } else {
+                    hexString.append(Integer.toHexString(0xFF & hash[i]));
+                }
+            }
+            return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -204,7 +216,7 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
                         saveDataInDatabase(user);
 
                         Toast.makeText(getApplicationContext(), "Registrado correctamente. Inicie sesión!", Toast.LENGTH_LONG).show();
-                        Intent accessIntent = new Intent(getApplicationContext(), MapsActivity.class);
+                        Intent accessIntent = new Intent(getApplicationContext(), GraphicsActivity.class);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(accessIntent);

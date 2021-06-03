@@ -63,7 +63,7 @@
                     android:textSize="16sp"
                     android:backgroundTint="@color/cardview_background"
                     android:hint="Nombre completo"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:maxLines="1"
                     android:theme="@style/EditText_colores"/>
             </com.google.android.material.textfield.TextInputLayout>
