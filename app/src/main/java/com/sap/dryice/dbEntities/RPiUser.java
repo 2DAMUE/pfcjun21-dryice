@@ -3,17 +3,17 @@ package com.sap.dryice.dbEntities;
 public class RPiUser {
     private String idRPi;
     private String pwd;
-    private String name;
+    private String userId;
     private double latitude;
     private double longitude;
 
     public RPiUser() {
     }
 
-    public RPiUser(String idRPi, String pwd, String name, double latitude, double longitude) {
+    public RPiUser(String idRPi, String pwd, String userId, double latitude, double longitude) {
         this.idRPi = idRPi;
         this.pwd = pwd;
-        this.name = name;
+        this.userId = userId;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -34,12 +34,12 @@ public class RPiUser {
         this.pwd = pwd;
     }
 
-    public String getName() {
-        return name;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public double getLatitude() {
@@ -63,7 +63,7 @@ public class RPiUser {
         return "RPiUser{" +
                 "idRPi='" + idRPi + '\'' +
                 ", pwd='" + pwd + '\'' +
-                ", username='" + name + '\'' +
+                ", username='" + userId + '\'' +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
                 '}';
