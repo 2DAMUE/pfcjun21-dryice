@@ -63,6 +63,7 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
     private String name, email, pwd, profileImageUrl;
     private String strIdRPi;
     private String strPwdRPi;
+    private String pwdRPiHasheada;
 
     List<RPiUser> rPiUsers;
 
@@ -118,8 +119,7 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
         rPiUsers = idsRPis;
 
         boolean correct = false;
-
-        String pwdRPiHasheada = hashPwd();
+        pwdRPiHasheada = hashPwd();
 
         for (RPiUser rPiUser : rPiUsers) {
             if (rPiUser.getIdRPi().equals(strIdRPi) && rPiUser.getPwd().equals(pwdRPiHasheada)) {
@@ -235,7 +235,7 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
 
     private void saveDataInDatabase(User user) {
         CollectUsers.saveFirebase(user);
-        RPiUser rPiUser = new RPiUser(strIdRPi, strPwdRPi, user.getUserId(), latitude, longitude);
+        RPiUser rPiUser = new RPiUser(strIdRPi, pwdRPiHasheada, user.getUserId(), latitude, longitude);
         CollectRPiUsers.saveFirebase(rPiUser);
     }
 
