@@ -1,53 +1,265 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".screens.ProfileActivity"
     android:fitsSystemWindows="true"
+    tools:context=".screens.ProfileActivity"
     android:background="@color/oscuroPrimary">
 
-    <androidx.appcompat.widget.Toolbar
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/toolbar_background">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="left"
-            >
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/icono_dryice_toolbar"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Perfil"
-                android:textSize="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="7dp"
-                android:fontFamily="@font/abeatby_kai_regular"
-                android:textColor="@color/claroLetras"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="?attr/actionBarSize">
 
-        </LinearLayout>
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/cardview_background">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="left"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icono_atras_toolbar"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Perfil"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/abeatby_kai_regular"
+                    android:textColor="@color/claroLetras"/>
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar_id"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:background="@color/cardview_background">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textViewUserNameProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="170dp"
+                    android:layout_marginTop="25dp"
+                    android:text="Sergio Daniel"
+                    android:textColor="@color/claroLetras"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="start">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_baseline_location_on_24"/>
+
+                    <TextView
+                        android:id="@+id/txt_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ubicacion"
+                        android:layout_marginStart="10dp"
+                        android:textSize="17dp"
+                        android:textColor="@color/claroLetras"/>
+
+                </LinearLayout>
+
+
+
+                <ImageView
+                    android:id="@+id/imageViewProfilePhoto"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="23dp"
+                    android:src="@drawable/hombre"/>
+
+
+            </RelativeLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="right">
-
-            <ImageView
-                android:layout_width="34dp"
-                android:layout_height="34dp"
-                android:src="@drawable/hombre"
-                android:layout_marginRight="15dp"/>
-
-        </LinearLayout>
+            android:layout_alignParentTop="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/oscuroPrimary">
 
 
-    </androidx.appcompat.widget.Toolbar>
 
-</RelativeLayout>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="20dp"
+                    app:cardCornerRadius="8dp"
+                    android:backgroundTint="@color/cardview_background"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:id="@+id/txt_datos_personales"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="20dp"
+                                android:text="Datos personales"
+                                android:textColor="@color/iconoUnselected"
+                                android:textSize="20dp"
+                                android:textStyle="bold"
+                                android:gravity="center_vertical"/>
+
+                        </LinearLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputNombre"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/cardview_background"
+                            android:textColorHint="@color/azulAccent"
+                            app:boxStrokeColor="@color/azulAccent"
+                            app:endIconTint="@color/azulAccent"
+                            app:hintTextColor="@color/azulAccent"
+                            app:placeholderTextColor="@color/azulAccent"
+                            app:helperText="Nombre Completo"
+                            app:helperTextTextColor="@color/azulAccent">
+                            <TextView
+                                android:id="@+id/textNombre"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="16sp"
+                                android:textColor="@color/claroLetras"
+                                android:text="Sergio Daniel"
+                                android:inputType="text"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputEmail"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/cardview_background"
+                            android:textColorHint="@color/azulAccent"
+                            app:boxStrokeColor="@color/azulAccent"
+                            app:endIconTint="@color/azulAccent"
+                            app:hintTextColor="@color/azulAccent"
+                            app:placeholderTextColor="@color/azulAccent"
+                            app:helperText="Email"
+                            app:helperTextTextColor="@color/azulAccent">
+                            <TextView
+                                android:id="@+id/textEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="16sp"
+                                android:textColor="@color/claroLetras"
+                                android:text="sergiodani@gmail.com"
+                                android:inputType="textEmailAddress"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputContrasena"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/cardview_background"
+                            android:textColorHint="@color/azulAccent"
+                            app:boxStrokeColor="@color/azulAccent"
+                            app:endIconTint="@color/azulAccent"
+                            app:hintTextColor="@color/azulAccent"
+                            app:placeholderTextColor="@color/azulAccent"
+                            app:helperText="Contraseña"
+                            app:helperTextTextColor="@color/azulAccent">
+                            <TextView
+                                android:id="@+id/textContrasena"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="16sp"
+                                android:textColor="@color/claroLetras"
+                                android:inputType="textPassword"
+                                android:text="Pablo diaz Sanz"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputIdRpi"
+                            android:layout_width="270dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/cardview_background"
+                            android:textColorHint="@color/azulAccent"
+                            app:boxStrokeColor="@color/azulAccent"
+                            app:endIconTint="@color/azulAccent"
+                            app:hintTextColor="@color/azulAccent"
+                            app:placeholderTextColor="@color/azulAccent"
+                            app:helperText="ID de la RPI"
+                            app:helperTextTextColor="@color/azulAccent">
+                            <TextView
+                                android:id="@+id/textIdRpi"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:textSize="16sp"
+                                android:textColor="@color/claroLetras"
+                                android:inputType="text"
+                                android:text="RaspiDAM"
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+
+                    android:src="@drawable/icono_dryice_toolbar" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
