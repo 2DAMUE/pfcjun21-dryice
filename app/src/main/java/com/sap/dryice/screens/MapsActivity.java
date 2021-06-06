@@ -252,9 +252,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 ImageView imgInfo = view.findViewById(R.id.imageViewProfilePhoto);
                 TextView titInfo = view.findViewById(R.id.textViewUserNameProfile);
-                TextView co2Info = view.findViewById(R.id.text_view_co2);
-                TextView tempInfo = view.findViewById(R.id.text_view_temp);
-                TextView humInfo = view.findViewById(R.id.text_view_hum);
+                TextView co2Info = view.findViewById(R.id.txtCO2Info);
+                TextView tempInfo = view.findViewById(R.id.txtTempInfo);
+                TextView humInfo = view.findViewById(R.id.txtHumInfo);
                 TextView location = view.findViewById(R.id.txt_location);
 
                 String getData = marker.getTitle();
