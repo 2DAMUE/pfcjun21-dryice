@@ -103,13 +103,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
     public void toolbarIconToGraphicsActivity(View view) {
-        mAuth.signOut();
-        LoginActivity.USERUID = null;
-        LoginActivity.RPI_USERUID = null;
         startActivity(new Intent(this, GraphicsActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
     }
     public void toolbarIconToLoginActivity(View view) {
+        mAuth.signOut();
+        LoginActivity.USERUID = null;
+        LoginActivity.RPI_USERUID = null;
         startActivity(new Intent(this, LoginActivity.class));
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
     }
