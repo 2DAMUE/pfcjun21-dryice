@@ -13,10 +13,10 @@ public class RTExtendedDataMapper extends FirebaseMapper<RTExtendedDataEntity, R
         rtExtData.setIdRPi(articleEntity.getIdRPi());
         rtExtData.setMaxCO2(articleEntity.getMaxCO2());
         rtExtData.setMaxTemperature(articleEntity.getMaxTemperature());
-        rtExtData.setMaxRelHumedity(articleEntity.getMaxRelHumedity());
+        rtExtData.setMaxRelHumedity(articleEntity.getMaxHumedity());
         rtExtData.setMinCO2(articleEntity.getMinCO2());
         rtExtData.setMinTemperature(articleEntity.getMinTemperature());
-        rtExtData.setMinRelHumedity(articleEntity.getMinRelHumedity());
+        rtExtData.setMinRelHumedity(articleEntity.getMinHumedity());
         return rtExtData;
     }
 }

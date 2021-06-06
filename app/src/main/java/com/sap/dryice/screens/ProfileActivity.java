@@ -106,6 +106,7 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(new Intent(this, GraphicsActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.stay);
     }
+
     public void toolbarIconToLoginActivity(View view) {
         mAuth.signOut();
         LoginActivity.USERUID = null;

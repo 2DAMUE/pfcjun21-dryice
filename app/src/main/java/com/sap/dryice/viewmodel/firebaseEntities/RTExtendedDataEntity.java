@@ -7,22 +7,22 @@ public class RTExtendedDataEntity {
     private String idRPi;
     private double maxCO2;
     private double maxTemperature;
-    private double maxRelHumedity;
+    private double maxHumedity;
     private double minCO2;
     private double minTemperature;
-    private double minRelHumedity;
+    private double minHumedity;
 
     public RTExtendedDataEntity() {
     }
 
-    public RTExtendedDataEntity(String idRPi, double maxCO2, double maxTemperature, double maxRelHumedity, double minCO2, double minTemperature, double minRelHumedity) {
+    public RTExtendedDataEntity(String idRPi, double maxCO2, double maxTemperature, double maxHumedity, double minCO2, double minTemperature, double minHumedity) {
         this.idRPi = idRPi;
         this.maxCO2 = maxCO2;
         this.maxTemperature = maxTemperature;
-        this.maxRelHumedity = maxRelHumedity;
+        this.maxHumedity = maxHumedity;
         this.minCO2 = minCO2;
         this.minTemperature = minTemperature;
-        this.minRelHumedity = minRelHumedity;
+        this.minHumedity = minHumedity;
     }
 
     public String getIdRPi() {
@@ -49,12 +49,12 @@ public class RTExtendedDataEntity {
         this.maxTemperature = maxTemperature;
     }
 
-    public double getMaxRelHumedity() {
-        return maxRelHumedity;
+    public double getMaxHumedity() {
+        return maxHumedity;
     }
 
-    public void setMaxRelHumedity(double maxRelHumedity) {
-        this.maxRelHumedity = maxRelHumedity;
+    public void setMaxHumedity(double maxHumedity) {
+        this.maxHumedity = maxHumedity;
     }
 
     public double getMinCO2() {
@@ -73,12 +73,12 @@ public class RTExtendedDataEntity {
         this.minTemperature = minTemperature;
     }
 
-    public double getMinRelHumedity() {
-        return minRelHumedity;
+    public double getMinHumedity() {
+        return minHumedity;
     }
 
-    public void setMinRelHumedity(double minRelHumedity) {
-        this.minRelHumedity = minRelHumedity;
+    public void setMinHumedity(double minHumedity) {
+        this.minHumedity = minHumedity;
     }
 
     @Override
@@ -87,10 +87,10 @@ public class RTExtendedDataEntity {
                 "idRPi=" + idRPi +
                 ", maxCO2=" + maxCO2 +
                 ", maxTemperature=" + maxTemperature +
-                ", maxRelHumedity=" + maxRelHumedity +
+                ", maxRelHumedity=" + maxHumedity +
                 ", minCO2=" + minCO2 +
                 ", minTemperature=" + minTemperature +
-                ", minRelHumedity=" + minRelHumedity +
+                ", minRelHumedity=" + minHumedity +
                 '}';
     }
 }
