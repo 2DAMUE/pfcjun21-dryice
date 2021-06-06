@@ -12,8 +12,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.sap.dryice.R;
+import com.sap.dryice.dbEntities.RTData;
+import com.sap.dryice.dbEntities.RTExtendedData;
+import com.sap.dryice.viewmodel.RTDataViewModel;
+
+import java.util.List;
 
 public class PageFragment1 extends Fragment {
 
@@ -43,6 +50,21 @@ public class PageFragment1 extends Fragment {
         updateTextTemp();
         updateTextHum();
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        RTDataViewModel viewModel = ViewModelProviders.of(this).get(RTDataViewModel.class);
+        viewModel.getArticles().observe(this, new Observer<List<RTData>>() {
+            @Override
+            public void onChanged(@Nullable List<RTData> articles) {
+                co2 = (int) articles.get(0).getCO2();
+                temperatura = (int) articles.get(0).getTemperature();
+                humedad = (int) articles.get(0).getRelHumedity();
+            }
+        });
     }
 
     private void updateProgressBar() {
