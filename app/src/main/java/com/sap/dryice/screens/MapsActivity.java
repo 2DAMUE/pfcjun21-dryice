@@ -242,7 +242,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String getData = marker.getTitle();
 
                 Glide.with(getApplicationContext())
-                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  getData + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
+                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  LoginActivity.USERUID + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
                                 .placeholder(R.drawable.hombre)
                                 .centerCrop()
                                 .into(imgInfo);
