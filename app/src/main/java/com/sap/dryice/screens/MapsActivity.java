@@ -267,6 +267,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         co2 = (int) e.getCO2();
                         temp = (int) e.getTemperature();
                         hum = (int) e.getHumedity();
+
+                        co2Info.setText(String.valueOf(co2));
+                        tempInfo.setText(String.valueOf(temp) + "ºC");
+                        humInfo.setText(String.valueOf(hum) + "%");
+
+
                     }
 
                     @Override
@@ -276,9 +282,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 });
 
 
-                co2Info.setText(co2);
-                tempInfo.setText(temp + "ºC");
-                humInfo.setText(hum + "%");
+
 
                 for (RPiUser e : rPiUsersList) {
                     if (e.getIdRPi().equals(getData)) {
@@ -319,6 +323,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 }
 
+
                 builder.setView(view);
 
                 builder.show();
@@ -327,6 +332,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         });
     }
+
 
     public void toolbarIconToProfileActivity(View view) {
         startActivity(new Intent(this, ProfileActivity.class));
