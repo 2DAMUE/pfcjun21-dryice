@@ -14,4 +14,6 @@ Esto son unas imagenes de lo que muestra la aplicacion y de la Raspberry con el 
 
 ![](img/rpi_sen_3d.jpeg)
 
-![](img/graphics.jpeg) ![](img/map.jpeg)
+|  Graficas con los datos  |  Mapa con datos  |
+|--------------------------|:----------------:|
+| ![](img/graphics.jpeg)   | ![](img/map.jpeg)|
