@@ -25,10 +25,10 @@ import java.util.List;
 
 public class PageFragment1 extends Fragment {
 
-    private int co2 = 1670;
+    private int co2 = 0;
     private int MAX_co2 = 1850;
-    private int temperatura = 22;
-    private int humedad = 56;
+    private int temperatura = 0;
+    private int humedad = 0;
 
     private TextView text_view_progress;
     private TextView text_view_temp;
@@ -59,16 +59,28 @@ public class PageFragment1 extends Fragment {
             public void onChanged(@Nullable List<RTData> articles) {
                 for (RTData rtd : articles){
                     if (rtd.getIdRPi().equals(LoginActivity.USERUID)){
-                        co2 = (int) articles.get(0).getCO2();
-                        temperatura = (int) articles.get(0).getTemperature();
-                        humedad = (int) articles.get(0).getRelHumedity();
-                        updateProgressBar();
-                        updateTextTemp();
-                        updateTextHum();
+                        changeData(rtd);
                     }
                 }
             }
         });
+    }
+
+    private void changeData(RTData rtd) {
+        if (co2 != rtd.getCO2()) {
+            co2 = (int) rtd.getCO2();
+            updateProgressBar();
+        }
+
+        if (temperatura != rtd.getTemperature()) {
+            temperatura = (int) rtd.getTemperature();
+            updateTextTemp();
+        }
+
+        if (humedad != rtd.getRelHumedity()) {
+            humedad = (int) rtd.getRelHumedity();
+            updateTextHum();
+        }
     }
 
 

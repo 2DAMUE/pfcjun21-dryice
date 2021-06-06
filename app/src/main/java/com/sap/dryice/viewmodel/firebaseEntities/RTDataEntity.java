@@ -41,11 +41,11 @@ public class RTDataEntity {
         this.Temperature = temperature;
     }
 
-    public double getRelHumedity() {
+    public double getHumedity() {
         return Humedity;
     }
 
-    public void setRelHumedity(double relHumedity) {
+    public void setHumedity(double relHumedity) {
         this.Humedity = relHumedity;
     }
 

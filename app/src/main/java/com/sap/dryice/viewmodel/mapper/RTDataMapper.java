@@ -11,7 +11,7 @@ public class RTDataMapper extends FirebaseMapper<RTDataEntity, RTData> {
         rtData.setIdRPi(articleEntity.getIdRPi());
         rtData.setCO2(articleEntity.getCO2());
         rtData.setTemperature(articleEntity.getTemperature());
-        rtData.setRelHumedity(articleEntity.getRelHumedity());
+        rtData.setRelHumedity(articleEntity.getHumedity());
         return rtData;
     }
 }
