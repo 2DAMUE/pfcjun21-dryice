@@ -262,12 +262,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         } else {
                             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                             List<Address> addresses = null;
-                            Glide.with(getApplicationContext())
-                                    .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  e.getUserId() + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
-                                    .placeholder(R.drawable.hombre)
-                                    .centerCrop()
-                                    .circleCrop()
-                                    .into(imgInfo);
                             try {
                                 addresses = geocoder.getFromLocation(e.getLatitude(), e.getLongitude(), 1);
                             } catch (IOException ex) {
@@ -275,25 +269,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             }
                             String cityName = addresses.get(0).getAddressLine(0);
                             location.setText(cityName);
+
+                            Glide.with(getApplicationContext())
+                                    .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  e.getUserId() + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
+                                    .placeholder(R.drawable.hombre)
+                                    .centerCrop()
+                                    .circleCrop()
+                                    .into(imgInfo);
+
+                            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(e.getUserId());
+                            userRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    User u = snapshot.getValue(User.class);
+                                    titInfo.setText(u.getIdRPi());
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
                     }
                 }
-
-
-
-                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(LoginActivity.USERUID);
-                userRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User u = snapshot.getValue(User.class);
-                        titInfo.setText(u.getIdRPi());
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
 
                 DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("RTData").child(getData);
                 myRef.addValueEventListener(new ValueEventListener() {
