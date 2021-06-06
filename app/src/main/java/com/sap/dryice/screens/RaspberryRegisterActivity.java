@@ -211,6 +211,7 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
                         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
                         String userUid = firebaseUser.getUid();
                         LoginActivity.USERUID = userUid;
+                        LoginActivity.RPI_USERUID = strIdRPi;
                         uploadImageToFirebaseStorage();
                         User user = new User(userUid, name, email, strIdRPi, latitude, longitude);
                         saveDataInDatabase(user);
