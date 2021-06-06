@@ -155,7 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
             intent.putExtra("Name", usuario);
             intent.putExtra("Email", correo);
             intent.putExtra("Password", pwd);
-            intent.putExtra("UriImg", imageUri);
+            intent.putExtra("ImgUri", imageUri);
             startActivity(intent);
         }
     }

@@ -84,7 +84,7 @@ public class RaspberryRegisterActivity extends AppCompatActivity implements Coll
 
     private void getIntentData() {
         Intent intent = getIntent();
-        name = intent.getStringExtra("Username");
+        name = intent.getStringExtra("Name");
         email = intent.getStringExtra("Email");
         pwd = intent.getStringExtra("Password");
         imageUri = intent.getParcelableExtra("ImgUri");
