@@ -57,7 +57,6 @@ public class GraphicsActivity extends AppCompatActivity {
         List<Fragment> list = new ArrayList<>();
         list.add(new PageFragment1());
         list.add(new PageFragment2());
-        list.add(new PageFragment3());
 
         viewPager = findViewById(R.id.pager);
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(),list);
