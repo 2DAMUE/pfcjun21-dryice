@@ -81,8 +81,8 @@ public class PageFragment1 extends Fragment {
             updateTextTemp();
         }
 
-        if (humedad != (int) rtd.getRelHumedity()) {
-            humedad = (int) rtd.getRelHumedity();
+        if (humedad != (int) rtd.getHumedity()) {
+            humedad = (int) rtd.getHumedity();
             updateTextHum();
         }
     }

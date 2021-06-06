@@ -4,7 +4,7 @@ public class RTData {
     private String idRPi;
     private double CO2;
     private double temperature;
-    private double relHumedity;
+    private double humedity;
 
     public RTData() {
     }
@@ -31,12 +31,12 @@ public class RTData {
         this.temperature = temperature;
     }
 
-    public double getRelHumedity() {
-        return relHumedity;
+    public double getHumedity() {
+        return humedity;
     }
 
-    public void setRelHumedity(double relHumedity) {
-        this.relHumedity = relHumedity;
+    public void setHumedity(double relHumedity) {
+        this.humedity = relHumedity;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class RTData {
         return "RTData{" +
                 "co2=" + CO2 +
                 ", temperature=" + temperature +
-                ", relHumedity=" + relHumedity +
+                ", relHumedity=" + humedity +
                 '}';
     }
 }

@@ -255,6 +255,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 String getData = marker.getTitle();
 
+                DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("RTData").child(getData);
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        RTData e = snapshot.getValue(RTData.class);
+                        co2Info.setText((int) e.getCO2() + " ppm");
+                        tempInfo.setText((int) e.getTemperature() + " ºC");
+                        humInfo.setText((int) e.getHumedity() + " %");
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
                 for (RPiUser e : rPiUsersList) {
                     if (e.getIdRPi().equals(getData)) {
                         if (e.getLatitude() == 0.0 && e.getLongitude() == 0.0){
@@ -293,22 +309,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         }
                     }
                 }
-
-                DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("RTData").child(getData);
-                myRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        RTData e = snapshot.getValue(RTData.class);
-                        co2Info.setText(String.valueOf((int) e.getCO2()));
-                        tempInfo.setText(String.valueOf((int) e.getTemperature()));
-                        humInfo.setText(String.valueOf((int) e.getRelHumedity()));
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
 
                 builder.setView(view);
 
