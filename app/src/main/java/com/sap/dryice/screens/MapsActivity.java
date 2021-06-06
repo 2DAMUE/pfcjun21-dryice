@@ -73,6 +73,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private CollectRPiUsers.Comunication collectRPiUsers = this;
     private User uBueno;
 
+    private int co2 = 0;
+    private int temp = 0;
+    private int hum = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -260,9 +264,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         RTData e = snapshot.getValue(RTData.class);
-                        co2Info.setText((int) e.getCO2());
-                        tempInfo.setText((int) e.getTemperature() + "ºC");
-                        humInfo.setText((int) e.getHumedity() + "%");
+                        co2 = (int) e.getCO2();
+                        temp = (int) e.getTemperature();
+                        hum = (int) e.getHumedity();
                     }
 
                     @Override
@@ -270,6 +274,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     }
                 });
+
+
+                co2Info.setText(co2);
+                tempInfo.setText(temp + "ºC");
+                humInfo.setText(hum + "%");
 
                 for (RPiUser e : rPiUsersList) {
                     if (e.getIdRPi().equals(getData)) {
