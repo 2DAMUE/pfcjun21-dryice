@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.sap.dryice.R;
 import com.sap.dryice.dbEntities.RTData;
 import com.sap.dryice.dbEntities.RTExtendedData;
+import com.sap.dryice.screens.LoginActivity;
 import com.sap.dryice.viewmodel.RTDataViewModel;
 
 import java.util.List;
@@ -52,12 +53,12 @@ public class PageFragment1 extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        while (true) {
-            try {
-                RTDataViewModel viewModel = ViewModelProviders.of(this).get(RTDataViewModel.class);
-                viewModel.getArticles().observe(this, new Observer<List<RTData>>() {
-                    @Override
-                    public void onChanged(@Nullable List<RTData> articles) {
+        RTDataViewModel viewModel = ViewModelProviders.of(this).get(RTDataViewModel.class);
+        viewModel.getArticles().observe(this, new Observer<List<RTData>>() {
+            @Override
+            public void onChanged(@Nullable List<RTData> articles) {
+                for (RTData rtd : articles){
+                    if (rtd.getIdRPi().equals(LoginActivity.USERUID)){
                         co2 = (int) articles.get(0).getCO2();
                         temperatura = (int) articles.get(0).getTemperature();
                         humedad = (int) articles.get(0).getRelHumedity();
@@ -65,13 +66,11 @@ public class PageFragment1 extends Fragment {
                         updateTextTemp();
                         updateTextHum();
                     }
-                });
-                Thread.sleep(4000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                }
             }
-        }
+        });
     }
+
 
     private void updateProgressBar() {
 

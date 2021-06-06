@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_centerInParent="true"
                 android:textColor="@color/white"
-                android:text="60%"
+                android:text="-"
                 android:textSize="50sp"
                 android:fontFamily="@font/abeatby_kai_regular"/>
             <TextView
@@ -142,7 +142,7 @@
                 android:id="@+id/text_view_temp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="22°C"
+                android:text="- °C"
                 android:textColor="@color/claroLetras"
                 android:textSize="26dp"
                 android:fontFamily="@font/abeatby_kai_regular"
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="10dp"
                     android:layout_marginLeft="20dp"
-                    android:text="56%"
+                    android:text="- %"
                     android:textColor="@color/claroLetras"
                     android:textSize="26dp"
                     android:fontFamily="@font/abeatby_kai_regular"

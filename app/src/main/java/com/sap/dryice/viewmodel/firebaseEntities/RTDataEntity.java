@@ -6,8 +6,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 public class RTDataEntity {
     private String idRPi;
     private double CO2;
-    private double temperature;
-    private double relHumedity;
+    private double Temperature;
+    private double Humedity;
 
     public RTDataEntity() {
     }
@@ -15,8 +15,8 @@ public class RTDataEntity {
     public RTDataEntity(String idRPi, double CO2, double temperature, double relHumedity) {
         this.idRPi = idRPi;
         this.CO2 = CO2;
-        this.temperature = temperature;
-        this.relHumedity = relHumedity;
+        this.Temperature = temperature;
+        this.Humedity = relHumedity;
     }
 
     public String getIdRPi(){return idRPi;}
@@ -34,27 +34,27 @@ public class RTDataEntity {
     }
 
     public double getTemperature() {
-        return temperature;
+        return Temperature;
     }
 
     public void setTemperature(double temperature) {
-        this.temperature = temperature;
+        this.Temperature = temperature;
     }
 
     public double getRelHumedity() {
-        return relHumedity;
+        return Humedity;
     }
 
     public void setRelHumedity(double relHumedity) {
-        this.relHumedity = relHumedity;
+        this.Humedity = relHumedity;
     }
 
     @Override
     public String toString() {
         return "RTData{" +
                 "co2=" + CO2 +
-                ", temperature=" + temperature +
-                ", relHumedity=" + relHumedity +
+                ", temperature=" + Temperature +
+                ", relHumedity=" + Humedity +
                 '}';
     }
 }
