@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,10 +40,17 @@ public class PageFragment2 extends Fragment {
     private String[] datos = new String[]{"C02 Max", "C02 Min"};
     private String[] datos2 = new String[]{"Temp. Max", "Temp. Min"};
     private String[] datos3 = new String[]{"Hum. Max", "Hum. Min"};
-    private int[] datosRasp = new int[]{76, 22};
-    private int[] datosRasp2 = new int[]{28, 22};
-    private int[] datosRasp3 = new int[]{1269, 602};
+    private int[] datosRasp = new int[]{0, 0};
+    private int[] datosRasp2 = new int[]{0, 0};
+    private int[] datosRasp3 = new int[]{0, 0};
     private int[] datosColores = new int[]{Color.rgb(252,100,2), Color.rgb(0,255,255)};
+
+    private TextView txtMaxCO2;
+    private TextView txtMaxTemp;
+    private TextView txtMaxHum;
+    private TextView txtMinCO2;
+    private TextView txtMinTemp;
+    private TextView txtMinHum;
 
 
 
@@ -54,6 +62,20 @@ public class PageFragment2 extends Fragment {
         barChart = (BarChart) rootView.findViewById(R.id.barChart);
         barChart2 = (BarChart) rootView.findViewById(R.id.barChart2);
         barChart3 = (BarChart) rootView.findViewById(R.id.barChart3);
+
+        txtMaxCO2 = (TextView) rootView.findViewById(R.id.txtMaxCO2);
+        txtMaxTemp = (TextView) rootView.findViewById(R.id.txtMaxTemp);
+        txtMaxHum = (TextView) rootView.findViewById(R.id.txtMaxHum);
+        txtMinCO2 = (TextView) rootView.findViewById(R.id.txtMinCO2);
+        txtMinTemp = (TextView) rootView.findViewById(R.id.txtMinTemp);
+        txtMinHum = (TextView) rootView.findViewById(R.id.txtMinHum);
+
+        txtMaxCO2.setText("- ppm");
+        txtMaxCO2.setText("- ºC");
+        txtMaxCO2.setText("- %");
+        txtMaxCO2.setText("- ppm");
+        txtMaxCO2.setText("- ºC");
+        txtMaxCO2.setText("- %");
 
         createCharts();
 
@@ -304,6 +326,13 @@ public class PageFragment2 extends Fragment {
         datosRasp = new int[]{(int) rtd.getMaxCO2(), (int) rtd.getMinCO2()};
         datosRasp2 = new int[]{(int) rtd.getMaxTemperature(), (int) rtd.getMinTemperature()};
         datosRasp3 = new int[]{(int) rtd.getMaxRelHumedity(), (int) rtd.getMinRelHumedity()};
+
+        txtMaxCO2.setText((int) rtd.getMaxCO2() + " ppm");
+        txtMaxCO2.setText((int) rtd.getMaxTemperature() + " ºC");
+        txtMaxCO2.setText((int) rtd.getMaxRelHumedity() + " %");
+        txtMaxCO2.setText((int) rtd.getMinCO2() + " ppm");
+        txtMaxCO2.setText((int) rtd.getMinTemperature() + " ºC");
+        txtMaxCO2.setText((int) rtd.getMinRelHumedity() + " %");
 
         createCharts();
     }
