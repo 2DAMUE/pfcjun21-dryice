@@ -14,6 +14,6 @@ public class RTExtendedDataRepository extends FirebaseDatabaseRepository<RTExten
 
     @Override
     protected String getRootNode() {
-        return "RTExtendedData";
+        return "RPiExtendedData";
     }
 }

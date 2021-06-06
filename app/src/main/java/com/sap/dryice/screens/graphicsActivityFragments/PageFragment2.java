@@ -221,7 +221,7 @@ public class PageFragment2 extends Fragment {
         axisLeft(barChart.getAxisLeft());
         axisRight(barChart.getAxisRight());
 
-        barChart.getAxisLeft().setAxisMaximum(100);
+        barChart.getAxisLeft().setAxisMaximum(2000);
         barChart.getAxisLeft().setAxisMinimum(0);
         barChart.setBackgroundColor(getResources().getColor(R.color.oscuroPrimary));
         barChart.getAxisLeft().setTextColor(getResources().getColor(R.color.white));
@@ -252,7 +252,7 @@ public class PageFragment2 extends Fragment {
         axisLeft(barChart3.getAxisLeft());
         axisRight(barChart3.getAxisRight());
 
-        barChart3.getAxisLeft().setAxisMaximum(2000);
+        barChart3.getAxisLeft().setAxisMaximum(100);
         barChart3.getAxisLeft().setAxisMinimum(0);
         barChart3.setBackgroundColor(getResources().getColor(R.color.oscuroPrimary));
         barChart3.getAxisLeft().setTextColor(getResources().getColor(R.color.white));
