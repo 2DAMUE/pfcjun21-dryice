@@ -12,4 +12,4 @@ Para tener guardada la Raspberry y el Sensor, hemos diseñado una caja y la hemo
 
 Esto son unas imagenes de lo que muestra la aplicacion y de la Raspberry con el sensor y la caja.
 
-!(img/rpi_sen_3d.jpeg)
+![](img/rpi_sen_3d.jpeg)
