@@ -9,6 +9,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -48,7 +50,9 @@ import com.sap.dryice.dbEntities.RPiUser;
 import com.sap.dryice.dbEntities.RTData;
 import com.sap.dryice.dbEntities.User;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, CollectRPiUsers.Comunication, CollectUsers.Comunication {
 
@@ -73,6 +77,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        ImageView imageView = (ImageView) findViewById(R.id.imgMaps);
+        Glide.with(getApplicationContext())
+                .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  LoginActivity.USERUID + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
+                .placeholder(R.drawable.hombre)
+                .centerCrop()
+                .into(imageView);
+
         // Para llamar al metodo onMapReady
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -238,8 +250,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 TextView co2Info = view.findViewById(R.id.text_view_co2);
                 TextView tempInfo = view.findViewById(R.id.text_view_temp);
                 TextView humInfo = view.findViewById(R.id.text_view_hum);
+                TextView location = view.findViewById(R.id.txt_location);
 
                 String getData = marker.getTitle();
+
+                for (RPiUser e : rPiUsersList) {
+                    if (e.getIdRPi().equals(getData)) {
+                        if (e.getLatitude() == 0.0 && e.getLongitude() == 0.0){
+                            location.setText("Actualiza tu ubicación");
+                        } else {
+                            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                            List<Address> addresses = null;
+                            try {
+                                addresses = geocoder.getFromLocation(e.getLatitude(), e.getLongitude(), 1);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                            String cityName = addresses.get(0).getAddressLine(0);
+                            location.setText(cityName);
+                        }
+                    }
+                }
 
                 Glide.with(getApplicationContext())
                         .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  LoginActivity.USERUID + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
