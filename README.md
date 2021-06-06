@@ -1,6 +1,6 @@
-# Instrucciones para conectar proyecto Android Studio al repositorio en Github
+# DryIce. Explore and Analyze
 
-> NO OLVIDES SUSTITUIR ESTE README POR CAPTURAS DE TU APLICACIÓN EN CUANTO LAS TENGAS
+> Proyecto de Fin de Ciclo, Universidad Europea de Madrid, 2021
 
 1. Sincroniza tu proyecto creado en Android Studio con ese repositorio, para ello y desde una terminal tipo Git Bash situate en la carpeta del proyecto y lanza los siguientes comandos:
 
