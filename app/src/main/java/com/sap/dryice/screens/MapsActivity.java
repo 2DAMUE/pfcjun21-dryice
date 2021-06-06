@@ -225,7 +225,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
+                if (marker.getTitle().equals(uBueno.getIdRPi())){
+                    return false;
+                }
                 AlertDialog builder = new AlertDialog.Builder(MapsActivity.this).create();
                 LayoutInflater factory = LayoutInflater.from(getApplicationContext());
                 View view = factory.inflate(R.layout.activity_map_information,
