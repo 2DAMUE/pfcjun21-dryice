@@ -242,7 +242,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                if (marker.getTitle().equals(uBueno.getIdRPi())){
+                if (marker.getTitle().equals(uBueno.getName())){
                     return false;
                 }
                 AlertDialog builder = new AlertDialog.Builder(MapsActivity.this).create();
