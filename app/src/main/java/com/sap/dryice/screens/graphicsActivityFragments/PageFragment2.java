@@ -71,11 +71,11 @@ public class PageFragment2 extends Fragment {
         txtMinHum = (TextView) rootView.findViewById(R.id.txtMinHum);
 
         txtMaxCO2.setText("- ppm");
-        txtMaxCO2.setText("- ºC");
-        txtMaxCO2.setText("- %");
-        txtMaxCO2.setText("- ppm");
-        txtMaxCO2.setText("- ºC");
-        txtMaxCO2.setText("- %");
+        txtMaxTemp.setText("- ºC");
+        txtMaxHum.setText("- %");
+        txtMinCO2.setText("- ppm");
+        txtMinTemp.setText("- ºC");
+        txtMinHum.setText("- %");
 
         createCharts();
 
@@ -328,11 +328,11 @@ public class PageFragment2 extends Fragment {
         datosRasp3 = new int[]{(int) rtd.getMaxRelHumedity(), (int) rtd.getMinRelHumedity()};
 
         txtMaxCO2.setText((int) rtd.getMaxCO2() + " ppm");
-        txtMaxCO2.setText((int) rtd.getMaxTemperature() + " ºC");
-        txtMaxCO2.setText((int) rtd.getMaxRelHumedity() + " %");
-        txtMaxCO2.setText((int) rtd.getMinCO2() + " ppm");
-        txtMaxCO2.setText((int) rtd.getMinTemperature() + " ºC");
-        txtMaxCO2.setText((int) rtd.getMinRelHumedity() + " %");
+        txtMaxTemp.setText((int) rtd.getMaxTemperature() + " ºC");
+        txtMaxHum.setText((int) rtd.getMaxRelHumedity() + " %");
+        txtMinCO2.setText((int) rtd.getMinCO2() + " ppm");
+        txtMinTemp.setText((int) rtd.getMinTemperature() + " ºC");
+        txtMinHum.setText((int) rtd.getMinRelHumedity() + " %");
 
         createCharts();
     }
