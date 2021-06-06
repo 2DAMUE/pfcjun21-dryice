@@ -1,23 +1,15 @@
-# Instrucciones para conectar proyecto Android Studio al repositorio en Github
+# DryIce
 
-> NO OLVIDES SUSTITUIR ESTE README POR CAPTURAS DE TU APLICACIÓN EN CUANTO LAS TENGAS
+> Proyecto de Fin de Ciclo, Universidad Europea de Madrid, 2021
 
-1. Sincroniza tu proyecto creado en Android Studio con ese repositorio, para ello y desde una terminal tipo Git Bash situate en la carpeta del proyecto y lanza los siguientes comandos:
+DryIce es un proyecto de IOT con un que tiene como objetivo detectar la calidad del aire.
 
-	$ git init
+Con ello, conseguiremos que, en lugares cómo colegios o universidades, se sepa cuando es necesario ventilar el espacio en el que nos encontramos y asi evitar contagios de virus o particulas malignas que puedan estar en el entorno.
 
-	$ git add -A
+Para ello, utilizamos una Raspberry Pi y un sensor de CO2, temperatura y humedad, en el cual registramos los datos y los subimos a una base de datos a tiempo real. Esos datos de la base de datos a tiempo real los vamos a pasar a una aplicacion que hemos creado para que el usuario los pueda ver y analizar.
 
-	$ git commit -am "initial commit"
+Para tener guardada la Raspberry y el Sensor, hemos diseñado una caja y la hemos impreso en 3D.
 
-	$ git remote add origin https://github.com/2DAMUE/repositorio-equipo.git
+Esto son unas imagenes de lo que muestra la aplicacion y de la Raspberry con el sensor y la caja.
 
-	$ git pull origin master --allow-unrelated-histories
-
-	// primero descargaremos hacia nuestro AS los archivos que ya existen en Github con un pull antes de hacer un push del código)
-	// y si se abre el editor vi, tenéis que teclear tecla ESC y luego :wq con tecla Enter al final
-
-	$ git push origin master
-
-
-2. Una vez que tengas tu proyecto Android Studio creado y sincronizado, dentro de la carpeta "docs" en AS sustituirás la versión actual por tu versión de las plantillas de Anteproyecto y Memoria
+!(img/rpi_sen_3d.jpeg)
