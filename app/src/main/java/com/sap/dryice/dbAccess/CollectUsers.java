@@ -21,8 +21,8 @@ public class CollectUsers {
 
     public static void updateLocation(double latitud, double longitud, String usurname) {
         Map<String,Object> updateLatLong = new HashMap<>();
-        updateLatLong.put("latitud",latitud);
-        updateLatLong.put("longitud",longitud);
+        updateLatLong.put("latitude",latitud);
+        updateLatLong.put("longitude",longitud);
         myDatabaseReference.child(usurname).updateChildren(updateLatLong);
     }
 

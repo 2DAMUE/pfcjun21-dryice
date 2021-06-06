@@ -31,6 +31,8 @@ public class GraphicsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphics);
 
+        System.out.println(LoginActivity.USERUID);
+
         bnv = findViewById(R.id.bottom_navigation);
 
         bnv.setSelectedItemId(R.id.activity_graficas);
@@ -62,10 +64,8 @@ public class GraphicsActivity extends AppCompatActivity {
 
         viewPager.setAdapter(pagerAdapter);
 
-
-
-
     }
+
     public void toolbarIconToProfileActivity(View view) {
         startActivity(new Intent(this, ProfileActivity.class));
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay);

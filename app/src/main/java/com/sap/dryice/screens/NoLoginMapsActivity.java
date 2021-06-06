@@ -2,6 +2,7 @@ package com.sap.dryice.screens;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
@@ -17,7 +18,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +41,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sap.dryice.R;
-import com.sap.dryice.dbAccess.CollectRPiRTData;
 import com.sap.dryice.dbAccess.CollectRPiUsers;
 import com.sap.dryice.dbAccess.CollectUsers;
 import com.sap.dryice.dbEntities.RPiUser;
@@ -50,12 +49,15 @@ import com.sap.dryice.dbEntities.User;
 
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, CollectRPiUsers.Comunication,  CollectUsers.Comunication {
+public class NoLoginMapsActivity extends FragmentActivity implements OnMapReadyCallback, CollectRPiUsers.Comunication {
 
     //probar android:launchMode="singleTask"
 
     //Barra de abajo
     private BottomNavigationView bnv;
+
+    private static FirebaseAuth mAuth;
+
     //Para el Mapa
     private GoogleMap mMap;
     private final OnMapReadyCallback omrc = this;
@@ -65,7 +67,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private FloatingActionButton find_location;
     //context
     private Context contexto = this;
-    private CollectUsers.Comunication collectUser = this;
     private CollectRPiUsers.Comunication collectRPiUsers = this;
     private User uBueno;
 
@@ -82,6 +83,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         checkPermissionClient();
 
+        CollectRPiUsers.takeData(collectRPiUsers);
+
         find_location = findViewById(R.id.fab);
         find_location.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,8 +92,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 obtenerLocalizacion();
             }
         });
-
-        CollectUsers.takeData(collectUser);
 
         bnv = findViewById(R.id.bottom_navigation);
         bnv.setSelectedItemId(R.id.bottom_navigation);
@@ -151,7 +152,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onProviderDisabled(@NonNull String provider) {
-                Toast.makeText(MapsActivity.this, "Activa el GPS", Toast.LENGTH_LONG).show();
+                Toast.makeText(NoLoginMapsActivity.this, "Activa el GPS", Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -165,9 +166,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (location != null) {
             double latitud = location.getLatitude();
             double longitud = location.getLongitude();
-            String username = u.getUid();
-            CollectUsers.updateLocation(latitud, longitud, username);
-            CollectUsers.takeData(collectUser);
+            drawLocation(latitud, longitud, "Mi posicion");
         }
     }
 
@@ -202,18 +201,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
     }
 
-    public void sendDataUsers(List<User> users) {
-        uBueno = new User();
-        mMap.clear();
-        for (User user : users) {
-            if (user.getUserId().equals(LoginActivity.USERUID)) {
-                uBueno = user;
-                CollectRPiUsers.takeData(collectRPiUsers);
-            }
-        }
-
-    }
-
     @Override
     public void sendDataRPiUsers(List<RPiUser> rPiUsersList) {
 
@@ -221,74 +208,72 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             drawLocationEvents(e.getLatitude(), e.getLongitude(), e.getIdRPi());
         }
 
-        drawLocation(uBueno.getLatitude(), uBueno.getLongitude(), uBueno.getIdRPi());
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 if (marker.getTitle().equals(uBueno.getIdRPi())){
                     return false;
-                } else {
-                    AlertDialog builder = new AlertDialog.Builder(MapsActivity.this).create();
-                    LayoutInflater factory = LayoutInflater.from(getApplicationContext());
-                    View view = factory.inflate(R.layout.activity_map_information,
-                            null);
-
-                    ImageView imgInfo = view.findViewById(R.id.imageViewProfilePhoto);
-                    TextView titInfo = view.findViewById(R.id.textViewUserNameProfile);
-                    TextView co2Info = view.findViewById(R.id.text_view_co2);
-                    TextView tempInfo = view.findViewById(R.id.text_view_temp);
-                    TextView humInfo = view.findViewById(R.id.text_view_hum);
-
-                    String getData = marker.getTitle();
-
-                    Glide.with(getApplicationContext())
-                            .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/net4-515ff.appspot.com/o/eventspics%2F" + getData + ".jpg?alt=media&token=26419bcf-488c-4c50-802a-8088e2c092b1"))
-                            .placeholder(R.drawable.hombre)
-                            .centerCrop()
-                            //.transition(DrawableTransitionOptions.withCrossFade(300))
-                            //.circleCrop()
-                            .into(imgInfo);
-
-                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("RpiUsers").child(getData);
-                    userRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            User u = snapshot.getValue(User.class);
-                            titInfo.setText(u.getName());
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-                    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("RTData").child(getData);
-                    myRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            RTData e = snapshot.getValue(RTData.class);
-                            co2Info.setText((int) e.getCO2());
-                            tempInfo.setText((int) e.getTemperature());
-                            humInfo.setText((int) e.getRelHumedity());
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-                    builder.setView(view);
-
-                    builder.show();
-                    return true;
                 }
+                AlertDialog builder = new AlertDialog.Builder(NoLoginMapsActivity.this).create();
+                LayoutInflater factory = LayoutInflater.from(getApplicationContext());
+                View view = factory.inflate(R.layout.activity_map_information,
+                        null);
+
+                ImageView imgInfo = view.findViewById(R.id.imageViewProfilePhoto);
+                TextView titInfo = view.findViewById(R.id.textViewUserNameProfile);
+                TextView co2Info = view.findViewById(R.id.text_view_co2);
+                TextView tempInfo = view.findViewById(R.id.text_view_temp);
+                TextView humInfo = view.findViewById(R.id.text_view_hum);
+
+                String getData = marker.getTitle();
+
+                Glide.with(getApplicationContext())
+                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/net4-515ff.appspot.com/o/eventspics%2F" + getData + ".jpg?alt=media&token=26419bcf-488c-4c50-802a-8088e2c092b1"))
+                        .placeholder(R.drawable.hombre)
+                        .centerCrop()
+                        //.transition(DrawableTransitionOptions.withCrossFade(300))
+                        //.circleCrop()
+                        .into(imgInfo);
+
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("RpiUsers").child(getData);
+                userRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User u = snapshot.getValue(User.class);
+                        titInfo.setText(u.getName());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("RTData").child(getData);
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        RTData e = snapshot.getValue(RTData.class);
+                        co2Info.setText((int) e.getCO2());
+                        tempInfo.setText((int) e.getTemperature());
+                        humInfo.setText((int) e.getRelHumedity());
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                builder.setView(view);
+
+                builder.show();
+                return true;
             }
         });
     }
     public void toolbarIconToProfileActivity(View view) {
-        startActivity(new Intent(this, ProfileActivity.class));
+        startActivity(new Intent(this, LoginActivity.class));
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
     }
 
@@ -303,5 +288,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title(name)
                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (u != null){
+            LoginActivity.USERUID = u.getUid();
+            System.out.println(LoginActivity.USERUID);
+            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users").child(LoginActivity.USERUID);
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User u = snapshot.getValue(User.class);
+                    LoginActivity.RPI_USERUID = u.getIdRPi();
+                    Intent accessIntent = new Intent(getApplicationContext(), GraphicsActivity.class);
+                    accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(accessIntent);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
     }
 }
