@@ -1,6 +1,9 @@
-package com.sap.dryice.dbEntities;
+package com.sap.dryice.viewmodel.firebaseEntities;
 
-public class RTExtendedData {
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
+public class RTExtendedDataEntity {
     private String idRPi;
     private double maxCO2;
     private double maxTemperature;
@@ -9,10 +12,10 @@ public class RTExtendedData {
     private double minTemperature;
     private double minRelHumedity;
 
-    public RTExtendedData() {
+    public RTExtendedDataEntity() {
     }
 
-    public RTExtendedData(String idRPi, double maxCO2, double maxTemperature, double maxRelHumedity, double minCO2, double minTemperature, double minRelHumedity) {
+    public RTExtendedDataEntity(String idRPi, double maxCO2, double maxTemperature, double maxRelHumedity, double minCO2, double minTemperature, double minRelHumedity) {
         this.idRPi = idRPi;
         this.maxCO2 = maxCO2;
         this.maxTemperature = maxTemperature;

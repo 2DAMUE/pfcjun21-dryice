@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.Chart;
@@ -23,9 +24,9 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.DataSet;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.sap.dryice.R;
-import com.sap.dryice.dbAccess.CollectRPiRTExtendedData;
 import com.sap.dryice.dbEntities.RTExtendedData;
 import com.sap.dryice.screens.LoginActivity;
+import com.sap.dryice.viewmodel.RTExtendedDataViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -282,5 +283,29 @@ public class PageFragment2 extends Fragment {
         return barData3;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        RTExtendedDataViewModel viewModel = ViewModelProviders.of(this).get(RTExtendedDataViewModel.class);
+        viewModel.getArticles().observe(this, new Observer<List<RTExtendedData>>() {
+            @Override
+            public void onChanged(@Nullable List<RTExtendedData> articles) {
+                for (RTExtendedData rtd : articles){
+                    if (rtd.getIdRPi().equals(LoginActivity.RPI_USERUID)){
+                        changeData(rtd);
+                    }
+                }
+            }
+        });
+    }
+
+    private void changeData(RTExtendedData rtd) {
+        datosRasp = new int[]{(int) rtd.getMaxCO2(), (int) rtd.getMinCO2()};
+        datosRasp2 = new int[]{(int) rtd.getMaxTemperature(), (int) rtd.getMinTemperature()};
+        datosRasp3 = new int[]{(int) rtd.getMaxRelHumedity(), (int) rtd.getMinRelHumedity()};
+
+        createCharts();
+    }
 }
 
