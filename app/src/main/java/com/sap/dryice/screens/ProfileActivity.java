@@ -86,7 +86,7 @@ public class ProfileActivity extends AppCompatActivity {
                 // Download directly from StorageReference using Glide
                 // (See MyAppGlideModule for Loader registration)
                 Glide.with(getApplicationContext())
-                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/net4-515ff.appspot.com/o/profilepics%2F" + LoginActivity.USERUID + ".jpg?alt=media&token=dcb65d07-cace-45b4-8fb7-e38880be36ce"))
+                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  LoginActivity.USERUID + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
                         .placeholder(R.drawable.hombre)
                         .centerCrop()
                         .transition(DrawableTransitionOptions.withCrossFade(300))

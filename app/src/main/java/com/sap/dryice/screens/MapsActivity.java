@@ -242,12 +242,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String getData = marker.getTitle();
 
                 Glide.with(getApplicationContext())
-                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/net4-515ff.appspot.com/o/eventspics%2F" + getData + ".jpg?alt=media&token=26419bcf-488c-4c50-802a-8088e2c092b1"))
-                        .placeholder(R.drawable.hombre)
-                        .centerCrop()
-                        //.transition(DrawableTransitionOptions.withCrossFade(300))
-                        //.circleCrop()
-                        .into(imgInfo);
+                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  getData + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
+                                .placeholder(R.drawable.hombre)
+                                .centerCrop()
+                                .into(imgInfo);
 
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(LoginActivity.USERUID);
                 userRef.addValueEventListener(new ValueEventListener() {
