@@ -286,6 +286,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         });*/
     }
+    public void toolbarIconToProfileActivity(View view) {
+        startActivity(new Intent(this, ProfileActivity.class));
+        overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
+    }
 
     private void drawLocationEvents(double latitud, double longitud, String name) {
         //Aqui se pasan las coordenadas

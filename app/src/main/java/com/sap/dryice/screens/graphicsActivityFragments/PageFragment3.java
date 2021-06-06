@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -42,9 +43,9 @@ public class PageFragment3 extends Fragment /**implements OnChartGestureListener
         //mChart.setOnChartValueSelectedListener(PageFragment3.this);
 
         mChart.setDragEnabled(true);
-        mChart.setScaleEnabled(false);
+        mChart.setScaleEnabled(true);
         mChart2.setDragEnabled(true);
-        mChart2.setScaleEnabled(false);
+        mChart2.setScaleEnabled(true);
         mChart3.setDragEnabled(true);
         mChart3.setScaleEnabled(false);
 
@@ -52,18 +53,22 @@ public class PageFragment3 extends Fragment /**implements OnChartGestureListener
         ArrayList<Entry> yValores2 = new ArrayList();
         ArrayList<Entry> yValores3 = new ArrayList();
 
-        yValores.add(new Entry(1, 40f));
+        yValores.add(new Entry(1, 66f));
         yValores.add(new Entry(2, 70f));
-        yValores.add(new Entry(3, 20f));
+        yValores.add(new Entry(3, 78f));
+        yValores.add(new Entry(4, 52f));
+        yValores.add(new Entry(5, 48f));
+        yValores.add(new Entry(6, 40f));
+
         yValores2.add(new Entry(1, 70f));
         yValores2.add(new Entry(2, 10f));
         yValores2.add(new Entry(3, 30f));
         yValores3.add(new Entry(1, 10f));
         yValores3.add(new Entry(2, 40f));
         yValores3.add(new Entry(3, 60f));
-        LineDataSet set1 = new LineDataSet(yValores, "Datos 1");
-        LineDataSet set2 = new LineDataSet(yValores2, "Datos 1");
-        LineDataSet set3 = new LineDataSet(yValores3, "Datos 1");
+        LineDataSet set1 = new LineDataSet(yValores, "Datos CO2");
+        LineDataSet set2 = new LineDataSet(yValores2, "Datos Temperatura");
+        LineDataSet set3 = new LineDataSet(yValores3, "Datos Humedad");
 
         set1.setFillAlpha(110);
         set1.setColor(Color.RED);
@@ -87,8 +92,33 @@ public class PageFragment3 extends Fragment /**implements OnChartGestureListener
         LineData data3 = new LineData(dataSets3);
 
         mChart.setData(data);
+        mChart.getAxisLeft().setTextColor(Color.WHITE);
+        mChart.getAxisRight().setTextColor(Color.WHITE);
+        mChart.getXAxis().setTextColor(Color.WHITE);
+        mChart.getLegend().setTextColor(Color.WHITE);
+        mChart.getDescription().setTextColor(Color.WHITE);
+        mChart.getDescription().setText("");
+        mChart.invalidate();
+
+
         mChart2.setData(data2);
+        mChart2.getAxisLeft().setTextColor(Color.WHITE);
+        mChart2.getAxisRight().setTextColor(Color.WHITE);
+        mChart2.getXAxis().setTextColor(Color.WHITE);
+        mChart2.getLegend().setTextColor(Color.WHITE);
+        mChart2.getDescription().setTextColor(Color.WHITE);
+        mChart2.getDescription().setText("");
+
+
         mChart3.setData(data3);
+        mChart3.getAxisLeft().setTextColor(Color.WHITE);
+        mChart3.getAxisRight().setTextColor(Color.WHITE);
+        mChart3.getXAxis().setTextColor(Color.WHITE);
+        mChart3.getLegend().setTextColor(Color.WHITE);
+        mChart3.getDescription().setTextColor(Color.WHITE);
+        mChart3.getDescription().setText("");
+        mChart.getAxisLeft().setAxisMaximum(100);
+        mChart.getAxisLeft().setAxisMinimum(0);
 
         return rootView;
     }

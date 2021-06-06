@@ -41,7 +41,8 @@ public class PageFragment2 extends Fragment implements CollectRPiRTExtendedData.
     private int[] datosRasp = new int[]{76, 22};
     private int[] datosRasp2 = new int[]{28, 22};
     private int[] datosRasp3 = new int[]{1269, 602};
-    private int[] datosColores = new int[]{Color.rgb(0,255,255), Color.rgb(252,100,2)};
+    private int[] datosColores = new int[]{Color.rgb(252,100,2), Color.rgb(0,255,255)};
+
 
 
     @Nullable

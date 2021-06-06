@@ -44,7 +44,8 @@
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 android:src="@drawable/hombre"
-                android:layout_marginRight="15dp"/>
+                android:layout_marginRight="15dp"
+                android:onClick="toolbarIconToProfileActivity"/>
 
         </LinearLayout>
 
@@ -67,8 +68,9 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="60dp"
-        android:layout_marginRight="4dp"/>
+        android:layout_marginBottom="130dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/icono_find_location"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

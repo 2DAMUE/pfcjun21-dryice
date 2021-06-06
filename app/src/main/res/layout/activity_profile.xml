@@ -26,7 +26,8 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:src="@drawable/icono_atras_toolbar"/>
+                    android:src="@drawable/icono_atras_toolbar"
+                    android:onClick="toolbarIconToGraphicsActivity"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -38,7 +39,19 @@
                     android:textColor="@color/claroLetras"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="right">
 
+                <ImageView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:src="@drawable/icono_cerrar_sesion"
+                    android:layout_marginRight="15dp"
+                    android:onClick="toolbarIconToLoginActivity"/>
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -76,13 +89,13 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/ic_baseline_location_on_24"/>
+                        android:src="@drawable/icono_find_location"/>
 
                     <TextView
                         android:id="@+id/txt_location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ubicacion"
+                        android:text="C/Rio Tajo 10, Madrid"
                         android:layout_marginStart="10dp"
                         android:textSize="17dp"
                         android:textColor="@color/claroLetras"/>
@@ -106,16 +119,12 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/oscuroPrimary">
-
 
 
                 <androidx.cardview.widget.CardView
@@ -252,13 +261,13 @@
                 </androidx.cardview.widget.CardView>
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="90dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
-
                     android:src="@drawable/icono_dryice_toolbar" />
             </LinearLayout>
-        </ScrollView>
+
     </LinearLayout>
 
 
