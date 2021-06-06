@@ -25,8 +25,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DryIce">
-        <activity android:name=".screens.RaspberryRegisterActivity"
-            android:theme="@style/Theme.DryIce.NoActionBar"></activity>
+        <activity android:name=".screens.MapInformationActivity"></activity>
+        <activity
+            android:name=".screens.RaspberryRegisterActivity"
+            android:theme="@style/Theme.DryIce.NoActionBar" />
         <activity
             android:name=".screens.LoginActivity"
             android:theme="@style/Theme.DryIce.NoActionBar" />

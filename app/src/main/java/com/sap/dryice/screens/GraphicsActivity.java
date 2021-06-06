@@ -3,6 +3,7 @@ package com.sap.dryice.screens;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -64,6 +65,10 @@ public class GraphicsActivity extends AppCompatActivity {
 
 
 
+    }
+    public void toolbarIconToProfileActivity(View view) {
+        startActivity(new Intent(this, ProfileActivity.class));
+        overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
     }
 
 
