@@ -50,7 +50,7 @@ import com.sap.dryice.dbEntities.User;
 
 import java.util.List;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, CollectRPiUsers.Comunication,  CollectUsers.Comunication {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, CollectRPiUsers.Comunication, CollectUsers.Comunication {
 
     //probar android:launchMode="singleTask"
 
@@ -225,68 +225,67 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                if (marker.getTitle().equals(uBueno.getIdRPi())){
-                    return false;
-                } else {
-                    AlertDialog builder = new AlertDialog.Builder(MapsActivity.this).create();
-                    LayoutInflater factory = LayoutInflater.from(getApplicationContext());
-                    View view = factory.inflate(R.layout.activity_map_information,
-                            null);
 
-                    ImageView imgInfo = view.findViewById(R.id.imageViewProfilePhoto);
-                    TextView titInfo = view.findViewById(R.id.textViewUserNameProfile);
-                    TextView co2Info = view.findViewById(R.id.text_view_co2);
-                    TextView tempInfo = view.findViewById(R.id.text_view_temp);
-                    TextView humInfo = view.findViewById(R.id.text_view_hum);
+                AlertDialog builder = new AlertDialog.Builder(MapsActivity.this).create();
+                LayoutInflater factory = LayoutInflater.from(getApplicationContext());
+                View view = factory.inflate(R.layout.activity_map_information,
+                        null);
 
-                    String getData = marker.getTitle();
+                ImageView imgInfo = view.findViewById(R.id.imageViewProfilePhoto);
+                TextView titInfo = view.findViewById(R.id.textViewUserNameProfile);
+                TextView co2Info = view.findViewById(R.id.text_view_co2);
+                TextView tempInfo = view.findViewById(R.id.text_view_temp);
+                TextView humInfo = view.findViewById(R.id.text_view_hum);
 
-                    Glide.with(getApplicationContext())
-                            .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/net4-515ff.appspot.com/o/eventspics%2F" + getData + ".jpg?alt=media&token=26419bcf-488c-4c50-802a-8088e2c092b1"))
-                            .placeholder(R.drawable.hombre)
-                            .centerCrop()
-                            //.transition(DrawableTransitionOptions.withCrossFade(300))
-                            //.circleCrop()
-                            .into(imgInfo);
+                String getData = marker.getTitle();
 
-                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("RpiUsers").child(getData);
-                    userRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            User u = snapshot.getValue(User.class);
-                            titInfo.setText(u.getName());
-                        }
+                Glide.with(getApplicationContext())
+                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/net4-515ff.appspot.com/o/eventspics%2F" + getData + ".jpg?alt=media&token=26419bcf-488c-4c50-802a-8088e2c092b1"))
+                        .placeholder(R.drawable.hombre)
+                        .centerCrop()
+                        //.transition(DrawableTransitionOptions.withCrossFade(300))
+                        //.circleCrop()
+                        .into(imgInfo);
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(LoginActivity.USERUID);
+                userRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        User u = snapshot.getValue(User.class);
+                        titInfo.setText(u.getIdRPi());
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("RTData").child(getData);
-                    myRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            RTData e = snapshot.getValue(RTData.class);
-                            co2Info.setText((int) e.getCO2());
-                            tempInfo.setText((int) e.getTemperature());
-                            humInfo.setText((int) e.getRelHumedity());
-                        }
+                    }
+                });
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("RTData").child(getData);
+                myRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        RTData e = snapshot.getValue(RTData.class);
+                        co2Info.setText(String.valueOf((int) e.getCO2()));
+                        tempInfo.setText(String.valueOf((int) e.getTemperature()));
+                        humInfo.setText(String.valueOf((int) e.getRelHumedity()));
+                    }
 
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
 
-                    builder.setView(view);
+                    }
+                });
 
-                    builder.show();
-                    return true;
-                }
+                builder.setView(view);
+
+                builder.show();
+                return true;
             }
+
         });
     }
+
     public void toolbarIconToProfileActivity(View view) {
         startActivity(new Intent(this, ProfileActivity.class));
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
