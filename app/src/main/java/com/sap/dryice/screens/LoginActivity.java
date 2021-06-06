@@ -19,10 +19,15 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sap.dryice.R;
+import com.sap.dryice.dbAccess.CollectRPiUsers;
+import com.sap.dryice.dbEntities.RPiUser;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.List;
+
+public class LoginActivity extends AppCompatActivity implements CollectRPiUsers.Comunication {
 
     public static String USERUID = null;
+    public static String RPI_USERUID = null;
     private TextInputLayout email, passwd;
     private TextView signUp;
     private Button btnLogin;
@@ -77,10 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         USERUID = mAuth.getCurrentUser().getUid();
-                        Intent accessIntent = new Intent(getApplicationContext(), GraphicsActivity.class);
-                        accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(accessIntent);
+                        CollectRPiUsers.takeData(LoginActivity.this::sendDataRPiUsers);
                     } else {
                         Toast.makeText(getApplicationContext(), "Signed in failed", Toast.LENGTH_SHORT).show();
                         Log.d("ERRORLOGIN", task.getException().toString());
@@ -98,8 +100,22 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this, RegisterActivity.class));
         overridePendingTransition(R.anim.slide_in_right, R.anim.stay);
     }
+
     public void loginToGraphicActivity(View view) {
         startActivity(new Intent(this, GraphicsActivity.class));
         overridePendingTransition(R.anim.slide_in_top, R.anim.stay);
+    }
+
+    @Override
+    public void sendDataRPiUsers(List<RPiUser> idsRPis) {
+        for (RPiUser rpi : idsRPis) {
+            if (rpi.getUserId().equals(USERUID)) {
+                RPI_USERUID = rpi.getIdRPi();
+                Intent accessIntent = new Intent(getApplicationContext(), GraphicsActivity.class);
+                accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(accessIntent);
+            }
+        }
     }
 }

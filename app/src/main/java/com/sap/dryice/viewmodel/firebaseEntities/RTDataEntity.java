@@ -1,12 +1,22 @@
-package com.sap.dryice.dbEntities;
+package com.sap.dryice.viewmodel.firebaseEntities;
 
-public class RTData {
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
+public class RTDataEntity {
     private String idRPi;
     private double CO2;
     private double temperature;
     private double relHumedity;
 
-    public RTData() {
+    public RTDataEntity() {
+    }
+
+    public RTDataEntity(String idRPi, double CO2, double temperature, double relHumedity) {
+        this.idRPi = idRPi;
+        this.CO2 = CO2;
+        this.temperature = temperature;
+        this.relHumedity = relHumedity;
     }
 
     public String getIdRPi(){return idRPi;}
