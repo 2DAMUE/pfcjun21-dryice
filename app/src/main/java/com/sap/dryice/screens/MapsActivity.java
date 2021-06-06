@@ -222,7 +222,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         drawLocation(uBueno.getLatitude(), uBueno.getLongitude(), uBueno.getIdRPi());
-        /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 if (marker.getTitle().equals(uBueno.getIdRPi())){
@@ -230,14 +230,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 AlertDialog builder = new AlertDialog.Builder(MapsActivity.this).create();
                 LayoutInflater factory = LayoutInflater.from(getApplicationContext());
-                View view = factory.inflate(R.layout.activity_map_event_information,
+                View view = factory.inflate(R.layout.activity_map_information,
                         null);
 
-                ImageView imgInfo = view.findViewById(R.id.img_info);
-                TextView titInfo = view.findViewById(R.id.tituloEventoInfo);
-                TextView co2Info = view.findViewById(R.id.e);
-                TextView tempInfo = view.findViewById(R.id.e);
-                TextView humInfo = view.findViewById(R.id.e);
+                ImageView imgInfo = view.findViewById(R.id.imageViewProfilePhoto);
+                TextView titInfo = view.findViewById(R.id.textViewUserNameProfile);
+                TextView co2Info = view.findViewById(R.id.text_view_co2);
+                TextView tempInfo = view.findViewById(R.id.text_view_temp);
+                TextView humInfo = view.findViewById(R.id.text_view_hum);
 
                 String getData = marker.getTitle();
 
@@ -254,7 +254,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         User u = snapshot.getValue(User.class);
-                        titInfo.setText(u.getUsername());
+                        titInfo.setText(u.getName());
                     }
 
                     @Override
@@ -284,7 +284,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 builder.show();
                 return true;
             }
-        });*/
+        });
     }
     public void toolbarIconToProfileActivity(View view) {
         startActivity(new Intent(this, ProfileActivity.class));
