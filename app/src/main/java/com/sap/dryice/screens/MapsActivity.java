@@ -260,9 +260,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         RTData e = snapshot.getValue(RTData.class);
-                        co2Info.setText((int) e.getCO2() + " ppm");
-                        tempInfo.setText((int) e.getTemperature() + " ºC");
-                        humInfo.setText((int) e.getHumedity() + " %");
+                        co2Info.setText((int) e.getCO2());
+                        tempInfo.setText((int) e.getTemperature() + "ºC");
+                        humInfo.setText((int) e.getHumedity() + "%");
                     }
 
                     @Override
