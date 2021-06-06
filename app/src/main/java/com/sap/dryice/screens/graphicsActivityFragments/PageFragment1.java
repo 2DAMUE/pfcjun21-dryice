@@ -58,7 +58,7 @@ public class PageFragment1 extends Fragment {
             @Override
             public void onChanged(@Nullable List<RTData> articles) {
                 for (RTData rtd : articles){
-                    if (rtd.getIdRPi().equals(LoginActivity.USERUID)){
+                    if (rtd.getIdRPi().equals(LoginActivity.RPI_USERUID)){
                         changeData(rtd);
                     }
                 }
