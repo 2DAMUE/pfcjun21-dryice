@@ -30,7 +30,7 @@ import com.sap.dryice.screens.LoginActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageFragment2 extends Fragment implements CollectRPiRTExtendedData.Comunication {
+public class PageFragment2 extends Fragment {
 
     private BarChart barChart;
     private BarChart barChart2;
@@ -54,8 +54,7 @@ public class PageFragment2 extends Fragment implements CollectRPiRTExtendedData.
         barChart2 = (BarChart) rootView.findViewById(R.id.barChart2);
         barChart3 = (BarChart) rootView.findViewById(R.id.barChart3);
 
-        CollectRPiRTExtendedData.takeDataFromOneRPi(this::sendDataFromOneRPi, LoginActivity.RPI_USERUID);
-
+        createCharts();
 
         return rootView;
 
@@ -281,21 +280,6 @@ public class PageFragment2 extends Fragment implements CollectRPiRTExtendedData.
         BarData barData3 = new BarData(barDataSet3);
         barData3.setBarWidth(0.45f);
         return barData3;
-    }
-
-    @Override
-    public void sendDataFromOneRPi(List<RTExtendedData> rteData) {
-
-        for (RTExtendedData rtData : rteData) {
-            if (rtData.getIdRPi().equals("RaspiDAM")) {
-                System.out.println(rtData);
-                datosRasp = new int[]{Integer.parseInt(rtData.getMaxCO2()), Integer.parseInt(rtData.getMinCO2())};
-                datosRasp2 = new int[]{Integer.parseInt(rtData.getMaxTemperature()), Integer.parseInt(rtData.getMinTemperature())};
-                datosRasp3 = new int[]{Integer.parseInt(rtData.getMaxRelHumedity()), Integer.parseInt(rtData.getMinRelHumedity())};
-
-                createCharts();
-            }
-        }
     }
 
 }

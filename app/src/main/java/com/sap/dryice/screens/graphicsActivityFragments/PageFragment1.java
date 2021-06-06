@@ -46,6 +46,10 @@ public class PageFragment1 extends Fragment {
         text_view_temp = (TextView) rootView.findViewById(R.id.text_view_temp);
         text_view_hum = (TextView) rootView.findViewById(R.id.text_view_hum);
 
+        updateProgressBar();
+        updateTextHum();
+        updateTextTemp();
+
         return rootView;
     }
 
@@ -67,17 +71,17 @@ public class PageFragment1 extends Fragment {
     }
 
     private void changeData(RTData rtd) {
-        if (co2 != rtd.getCO2()) {
+        if (co2 != (int) rtd.getCO2()) {
             co2 = (int) rtd.getCO2();
             updateProgressBar();
         }
 
-        if (temperatura != rtd.getTemperature()) {
+        if (temperatura != (int) rtd.getTemperature()) {
             temperatura = (int) rtd.getTemperature();
             updateTextTemp();
         }
 
-        if (humedad != rtd.getRelHumedity()) {
+        if (humedad != (int) rtd.getRelHumedity()) {
             humedad = (int) rtd.getRelHumedity();
             updateTextHum();
         }
