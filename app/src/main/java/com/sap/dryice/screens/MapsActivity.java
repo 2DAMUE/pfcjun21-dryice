@@ -238,7 +238,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             drawLocationEvents(e.getLatitude(), e.getLongitude(), e.getIdRPi());
         }
 
-        drawLocation(uBueno.getLatitude(), uBueno.getLongitude(), uBueno.getIdRPi());
+        drawLocation(uBueno.getLatitude(), uBueno.getLongitude(), uBueno.getName());
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
