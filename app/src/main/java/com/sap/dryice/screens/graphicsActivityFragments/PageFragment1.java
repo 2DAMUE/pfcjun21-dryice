@@ -38,17 +38,13 @@ public class PageFragment1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.main_page1,container,false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.main_page1, container, false);
         progress_bar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
         progress_bar.setMax(MAX_co2);
         text_view_progress = (TextView) rootView.findViewById(R.id.text_view_progress);
         text_view_temp = (TextView) rootView.findViewById(R.id.text_view_temp);
         text_view_hum = (TextView) rootView.findViewById(R.id.text_view_hum);
 
-        updateProgressBar();
-        updateTextTemp();
-        updateTextHum();
         return rootView;
     }
 
@@ -56,15 +52,25 @@ public class PageFragment1 extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        RTDataViewModel viewModel = ViewModelProviders.of(this).get(RTDataViewModel.class);
-        viewModel.getArticles().observe(this, new Observer<List<RTData>>() {
-            @Override
-            public void onChanged(@Nullable List<RTData> articles) {
-                co2 = (int) articles.get(0).getCO2();
-                temperatura = (int) articles.get(0).getTemperature();
-                humedad = (int) articles.get(0).getRelHumedity();
+        while (true) {
+            try {
+                RTDataViewModel viewModel = ViewModelProviders.of(this).get(RTDataViewModel.class);
+                viewModel.getArticles().observe(this, new Observer<List<RTData>>() {
+                    @Override
+                    public void onChanged(@Nullable List<RTData> articles) {
+                        co2 = (int) articles.get(0).getCO2();
+                        temperatura = (int) articles.get(0).getTemperature();
+                        humedad = (int) articles.get(0).getRelHumedity();
+                        updateProgressBar();
+                        updateTextTemp();
+                        updateTextHum();
+                    }
+                });
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
+        }
     }
 
     private void updateProgressBar() {
@@ -72,20 +78,21 @@ public class PageFragment1 extends Fragment {
         new CountDownTimer(2000, 40) {
 
             int progreso = 50; // Variable que va a ir aumentando del progreso
+
             @Override
             public void onTick(long millisUntilFinished) {
-                if(progreso<=co2){
+                if (progreso <= co2) {
                     progress_bar.setProgress(progreso);
 
                     text_view_progress.setText(String.valueOf(progreso));
-                    if (co2<=617)
-                        text_view_progress.setTextColor(Color.rgb(0,255,255));
-                    else if (co2<=1234)
-                        text_view_progress.setTextColor(Color.rgb(26,56,241));
+                    if (co2 <= 617)
+                        text_view_progress.setTextColor(Color.rgb(0, 255, 255));
+                    else if (co2 <= 1234)
+                        text_view_progress.setTextColor(Color.rgb(26, 56, 241));
                     else
-                        text_view_progress.setTextColor(Color.rgb(252,100,2));
+                        text_view_progress.setTextColor(Color.rgb(252, 100, 2));
                     progreso += (50);
-                }else {
+                } else {
                     progress_bar.setProgress(co2);
                     text_view_progress.setText(String.valueOf(co2));
                 }
@@ -99,54 +106,52 @@ public class PageFragment1 extends Fragment {
         }.start();
 
     }
+
     private void updateTextTemp() {
 
         new CountDownTimer(2000, 30) {
 
             int progreso = 1; // Variable que va a ir aumentando del progreso
+
             @Override
             public void onTick(long millisUntilFinished) {
-                if(progreso<=temperatura){
-
-                    text_view_temp.setText(String.valueOf(progreso)+"°C");
-
+                if (progreso <= temperatura) {
+                    text_view_temp.setText(String.valueOf(progreso) + "°C");
                     progreso += (1);
-                }else {
-                    text_view_temp.setText(String.valueOf(temperatura)+"°C");
-
+                } else {
+                    text_view_temp.setText(String.valueOf(temperatura) + "°C");
                 }
             }
 
             @Override
             public void onFinish() {
-                text_view_temp.setText(String.valueOf(temperatura)+"°C");
+                text_view_temp.setText(String.valueOf(temperatura) + "°C");
 
             }
         }.start();
 
-    }private void updateTextHum() {
+    }
+
+    private void updateTextHum() {
 
         new CountDownTimer(2000, 30) {
 
             int progreso = 2; // Variable que va a ir aumentando del progreso
+
             @Override
             public void onTick(long millisUntilFinished) {
-                if(progreso <=humedad){
-
-                    text_view_hum.setText(String.valueOf(progreso)+"%");
-
+                if (progreso <= humedad) {
+                    text_view_hum.setText(String.valueOf(progreso) + "%");
                     progreso += (2);
-                }else {
-
-                    text_view_hum.setText(String.valueOf(humedad)+"%");
+                } else {
+                    text_view_hum.setText(String.valueOf(humedad) + "%");
                 }
 
             }
 
             @Override
             public void onFinish() {
-
-                text_view_hum.setText(String.valueOf(humedad)+"%");
+                text_view_hum.setText(String.valueOf(humedad) + "%");
             }
         }.start();
 
