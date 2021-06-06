@@ -46,7 +46,7 @@ public class CollectRPiUsers {
     }
 
     public static void saveFirebase(RPiUser rPiUser) {
-        myDatabaseReference.child(rPiUser.getUserId()).setValue(rPiUser);
+        myDatabaseReference.child(rPiUser.getIdRPi()).setValue(rPiUser);
     }
 
     public interface Comunication{
