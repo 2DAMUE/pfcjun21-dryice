@@ -34,11 +34,12 @@ public class GraphicsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphics);
 
-        ImageView imageView = (ImageView) findViewById(R.id.imgMaps);
+        ImageView imageView = (ImageView) findViewById(R.id.imgGraphics);
         Glide.with(getApplicationContext())
                 .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  LoginActivity.USERUID + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
                 .placeholder(R.drawable.hombre)
                 .centerCrop()
+                .circleCrop()
                 .into(imageView);
 
         bnv = findViewById(R.id.bottom_navigation);

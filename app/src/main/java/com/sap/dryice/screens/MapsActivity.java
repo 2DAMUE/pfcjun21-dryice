@@ -83,6 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  LoginActivity.USERUID + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
                 .placeholder(R.drawable.hombre)
                 .centerCrop()
+                .circleCrop()
                 .into(imageView);
 
         // Para llamar al metodo onMapReady
@@ -261,6 +262,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         } else {
                             Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
                             List<Address> addresses = null;
+                            Glide.with(getApplicationContext())
+                                    .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  e.getUserId() + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
+                                    .placeholder(R.drawable.hombre)
+                                    .centerCrop()
+                                    .circleCrop()
+                                    .into(imgInfo);
                             try {
                                 addresses = geocoder.getFromLocation(e.getLatitude(), e.getLongitude(), 1);
                             } catch (IOException ex) {
@@ -272,11 +279,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
                 }
 
-                Glide.with(getApplicationContext())
-                        .load(Uri.parse("https://firebasestorage.googleapis.com/v0/b/dryicepfc.appspot.com/o/profilepics%2F" +  LoginActivity.USERUID + ".jpg?alt=media&token=594cbcd9-7493-44ab-8312-d07754538bc3"))
-                                .placeholder(R.drawable.hombre)
-                                .centerCrop()
-                                .into(imgInfo);
+
 
                 DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(LoginActivity.USERUID);
                 userRef.addValueEventListener(new ValueEventListener() {
