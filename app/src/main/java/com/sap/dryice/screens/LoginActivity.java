@@ -18,9 +18,17 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.sap.dryice.R;
 import com.sap.dryice.dbAccess.CollectRPiUsers;
 import com.sap.dryice.dbEntities.RPiUser;
+import com.sap.dryice.dbEntities.RTData;
+import com.sap.dryice.dbEntities.User;
 
 import java.util.List;
 
@@ -116,6 +124,33 @@ public class LoginActivity extends AppCompatActivity implements CollectRPiUsers.
                 accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(accessIntent);
             }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser firebaseUser = mAuth.getCurrentUser();
+        if (firebaseUser != null){
+            USERUID = firebaseUser.getUid();
+            DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users").child(USERUID);
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    User e = snapshot.getValue(User.class);
+                    RPI_USERUID = e.getIdRPi();
+
+                    Intent accessIntent = new Intent(getApplicationContext(), GraphicsActivity.class);
+                    accessIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    accessIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(accessIntent);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
         }
     }
 }
