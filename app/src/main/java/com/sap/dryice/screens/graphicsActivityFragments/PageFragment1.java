@@ -73,17 +73,18 @@ public class PageFragment1 extends Fragment {
     private void changeData(RTData rtd) {
         if (co2 != (int) rtd.getCO2()) {
             co2 = (int) rtd.getCO2();
-            updateProgressBar();
+            progress_bar.setProgress(co2);
+            text_view_progress.setText(String.valueOf(co2));
         }
 
         if (temperatura != (int) rtd.getTemperature()) {
             temperatura = (int) rtd.getTemperature();
-            updateTextTemp();
+            text_view_temp.setText(String.valueOf(temperatura) + "°C");
         }
 
         if (humedad != (int) rtd.getHumedity()) {
             humedad = (int) rtd.getHumedity();
-            updateTextHum();
+            text_view_hum.setText(String.valueOf(humedad) + "%");
         }
     }
 
