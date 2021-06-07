@@ -74,6 +74,12 @@ public class PageFragment1 extends Fragment {
         if (co2 != (int) rtd.getCO2()) {
             co2 = (int) rtd.getCO2();
             progress_bar.setProgress(co2);
+            if (co2 <= 617)
+                text_view_progress.setTextColor(Color.rgb(0, 255, 255));
+            else if (co2 <= 1234)
+                text_view_progress.setTextColor(Color.rgb(26, 56, 241));
+            else
+                text_view_progress.setTextColor(Color.rgb(252, 100, 2));
             text_view_progress.setText(String.valueOf(co2));
         }
 
